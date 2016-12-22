@@ -12,17 +12,15 @@ namespace NetCoreBoot.Admin.Controllers
 {
     public class HomeController : Controller
     {
-        private IAccountService _memberService;
-        public IAccountService MemberService
-        {
-            get { return _memberService; }
-            set
-            {
-                this._memberService = value;
-            }
-        }
+        private IAccountService accountService { get; set; }
 
-        IUserServices bc { get; set; }
+        private IUserServices userServices { get; set; }
+
+        public HomeController(IAccountService accountService, IUserServices userServices)
+        {
+            this.accountService = accountService;
+            this.userServices = userServices;
+        }
  
         public IActionResult Index()
         {
@@ -31,11 +29,9 @@ namespace NetCoreBoot.Admin.Controllers
 
         public IActionResult Index1()
         {
-            IServiceProvider serviceProvider = new ServiceCollection().BuildServiceProvider();
-            string str = "";
-
-            str = $"serviceProvider.GetService<IUserServices>(): {_memberService}";
-            str += $"<br/>serviceProvider.GetService<IAccountService>(): {bc}";
+            string str = String.Empty;
+            str = $"serviceProvider.GetService<IUserServices>(): {accountService}";
+            str += $"<br/>serviceProvider.GetService<IAccountService>(): {userServices}";
             ViewBag.STR = str;
             return View();
         }
