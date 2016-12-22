@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using NetCoreBoot.IServiceFactory;
 
 namespace NetCoreBoot.IService
 {
-    public interface IAccountService : IAppService
+    /// <summary>
+    /// 账号相关操作服务
+    /// </summary>
+    public interface IAccountService
     {
         bool CheckLogin(string userName, string password);
     }

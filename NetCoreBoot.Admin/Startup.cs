@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using NetCoreBoot.IService;
+using NetCoreBoot.Service;
 
 namespace NetCoreBoot.Admin
 {
@@ -29,11 +31,22 @@ namespace NetCoreBoot.Admin
         {
             // Add framework services.
             services.AddMvc();
+            //services.AddSingleton<IAccountService, AccountService>()
+            //           .AddSingleton<IUserServices, UserService>();
+
+            services.Add(new ServiceDescriptor(serviceType: typeof(IAccountService),
+                                       implementationType: typeof(AccountService),
+                                       lifetime: ServiceLifetime.Transient));
+            services.Add(new ServiceDescriptor(serviceType: typeof(IUserServices),
+                                       implementationType: typeof(UserService),
+                                       lifetime: ServiceLifetime.Transient));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            
+
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 

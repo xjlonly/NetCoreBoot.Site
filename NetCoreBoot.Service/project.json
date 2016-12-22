@@ -1,7 +1,15 @@
-﻿{
+{
   "version": "1.0.0-*",
 
+  "buildOptions": {
+    "debugType": "portable"
+  },
+
   "dependencies": {
+    "NetCoreBoot.IService": {
+      "version": "1.0.0-*",
+      "target": "project"
+    },
     "NETStandard.Library": "1.6.0"
   },
 

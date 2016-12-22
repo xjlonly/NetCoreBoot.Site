@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "NetCoreBoot.ServiceFactory", "NetCoreBoot.ServiceFactory\NetCoreBoot.ServiceFactory.xproj", "{8DF3F9D3-7B96-440D-9DE9-06EC01DB925A}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "NetCoreBoot.ServiceProvider", "NetCoreBoot.ServiceFactory\NetCoreBoot.ServiceProvider.xproj", "{8DF3F9D3-7B96-440D-9DE9-06EC01DB925A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Boot.Data", "Boot.Data", "{D08E2BB2-D757-4C3B-9778-2E1BB14B8907}"
 EndProject
@@ -27,7 +27,7 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "NetCoreBoot.Service", "NetC
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "NetCoreBoot.IService", "NetCoreBoot.IService\NetCoreBoot.IService.xproj", "{0F3D66F1-BC54-4837-BACE-847DDBAFCCB9}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "NetCoreBoot.IServiceFactory", "NetCoreBoot.IServiceFactory\NetCoreBoot.IServiceFactory.xproj", "{1EDC7276-FE59-46BA-A06E-4C444C8724E6}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "NetCoreBoot.IServiceProvider", "NetCoreBoot.IServiceFactory\NetCoreBoot.IServiceProvider.xproj", "{1EDC7276-FE59-46BA-A06E-4C444C8724E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
