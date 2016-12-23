@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NetCoreBoot.IService
+namespace NetCoreBoot.Entity.Enums
 {
-    public interface IUserServices
+    public enum Gender
     {
-        //IAccountService Account { get; } 
+        Man = 1,
+        Woman = 2,
     }
 }

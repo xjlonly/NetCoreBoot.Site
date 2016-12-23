@@ -3,15 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "NetCoreBoot.ServiceProvider", "NetCoreBoot.ServiceFactory\NetCoreBoot.ServiceProvider.xproj", "{8DF3F9D3-7B96-440D-9DE9-06EC01DB925A}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Boot.Data", "Boot.Data", "{D08E2BB2-D757-4C3B-9778-2E1BB14B8907}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "NetCoreBoot.Entity", "NetCoreBoot.Entity\NetCoreBoot.Entity.xproj", "{20BFFFB5-415C-487A-AEA6-919A4EACAEE7}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Boot.Factory", "Boot.Factory", "{EE36BF41-2DF9-4CA3-B5D1-B50E2E80E5AD}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "NetCoreBoot.DataOper", "NetCoreBoot.DataOper\NetCoreBoot.DataOper.xproj", "{2A5C486C-A4F5-44B1-B267-42829870E782}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "NetCoreBoot.Data", "NetCoreBoot.DataOper\NetCoreBoot.Data.xproj", "{2A5C486C-A4F5-44B1-B267-42829870E782}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Boot.Web", "Boot.Web", "{7C272C78-EB68-43F1-AF9E-44B456965088}"
 EndProject
@@ -27,18 +23,12 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "NetCoreBoot.Service", "NetC
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "NetCoreBoot.IService", "NetCoreBoot.IService\NetCoreBoot.IService.xproj", "{0F3D66F1-BC54-4837-BACE-847DDBAFCCB9}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "NetCoreBoot.IServiceProvider", "NetCoreBoot.IServiceFactory\NetCoreBoot.IServiceProvider.xproj", "{1EDC7276-FE59-46BA-A06E-4C444C8724E6}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8DF3F9D3-7B96-440D-9DE9-06EC01DB925A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8DF3F9D3-7B96-440D-9DE9-06EC01DB925A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8DF3F9D3-7B96-440D-9DE9-06EC01DB925A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8DF3F9D3-7B96-440D-9DE9-06EC01DB925A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{20BFFFB5-415C-487A-AEA6-919A4EACAEE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{20BFFFB5-415C-487A-AEA6-919A4EACAEE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20BFFFB5-415C-487A-AEA6-919A4EACAEE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -63,22 +53,16 @@ Global
 		{0F3D66F1-BC54-4837-BACE-847DDBAFCCB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F3D66F1-BC54-4837-BACE-847DDBAFCCB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F3D66F1-BC54-4837-BACE-847DDBAFCCB9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1EDC7276-FE59-46BA-A06E-4C444C8724E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1EDC7276-FE59-46BA-A06E-4C444C8724E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1EDC7276-FE59-46BA-A06E-4C444C8724E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1EDC7276-FE59-46BA-A06E-4C444C8724E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{8DF3F9D3-7B96-440D-9DE9-06EC01DB925A} = {EE36BF41-2DF9-4CA3-B5D1-B50E2E80E5AD}
 		{20BFFFB5-415C-487A-AEA6-919A4EACAEE7} = {D08E2BB2-D757-4C3B-9778-2E1BB14B8907}
 		{2A5C486C-A4F5-44B1-B267-42829870E782} = {D08E2BB2-D757-4C3B-9778-2E1BB14B8907}
 		{9E390E15-9FC7-49A5-B0A9-B95133C44C6A} = {7C272C78-EB68-43F1-AF9E-44B456965088}
 		{39CBBF7E-E500-46B3-BDC5-CD621125FC0A} = {91809812-EEB1-4742-8791-22C24B119B0D}
 		{B3A20138-BEE4-413A-801E-F5E95177A591} = {BF567251-0A7B-4E85-AC7E-8A28AF1EA340}
 		{0F3D66F1-BC54-4837-BACE-847DDBAFCCB9} = {BF567251-0A7B-4E85-AC7E-8A28AF1EA340}
-		{1EDC7276-FE59-46BA-A06E-4C444C8724E6} = {EE36BF41-2DF9-4CA3-B5D1-B50E2E80E5AD}
 	EndGlobalSection
 EndGlobal

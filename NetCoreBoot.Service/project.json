@@ -10,7 +10,11 @@
       "version": "1.0.0-*",
       "target": "project"
     },
-    "NETStandard.Library": "1.6.0"
+    "ChloeCore": "2.2.1",
+    "ChloeCore.MySql": "2.2.1",
+    "NETStandard.Library": "1.6.0",
+    "NetCoreBoot.Entity": "1.0.0-*",
+    "NetCoreBoot.DataOper": "1.0.0-*",
   },
 
   "frameworks": {

@@ -14,14 +14,14 @@ namespace NetCoreBoot.Admin.Controllers
     {
         private IAccountService accountService { get; set; }
 
-        private IUserServices userServices { get; set; }
+        private IUserService userServices { get; set; }
 
-        public HomeController(IAccountService accountService, IUserServices userServices)
+        public HomeController(IAccountService accountService, IUserService userServices)
         {
             this.accountService = accountService;
             this.userServices = userServices;
         }
- 
+
         public IActionResult Index()
         {
             return View();
@@ -30,8 +30,10 @@ namespace NetCoreBoot.Admin.Controllers
         public IActionResult Index1()
         {
             string str = String.Empty;
-            str = $"serviceProvider.GetService<IUserServices>(): {accountService}";
-            str += $"<br/>serviceProvider.GetService<IAccountService>(): {userServices}";
+            string userid = "";
+            bool result = accountService.CheckLogin("admin", "123456", out userid);
+            str = $"serviceProvider.GetService<IUserServices>():{result}";
+            str += $"<br/>serviceProvider.GetService<IAccountService>(): {userid}";
             ViewBag.STR = str;
             return View();
         }

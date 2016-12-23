@@ -1,0 +1,14 @@
+﻿{
+  "DIServices": [
+    {
+      "serviceType": "NetCoreBoot.IService.IAccountService",
+      "implementationType": "NetCoreBoot.Service.AccountService",
+      "lifetime": "Transient"
+    },
+    {
+      "serviceType": "NetCoreBoot.IService.IUserService",
+      "implementationType": "NetCoreBoot.Service.UserService",
+      "lifetime": "Transient"
+    }
+  ]
+}

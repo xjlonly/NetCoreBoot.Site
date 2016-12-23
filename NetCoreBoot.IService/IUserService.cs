@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NetCoreBoot.DataOper
+namespace NetCoreBoot.IService
 {
-    public class Class1
+    public interface IUserService
     {
-        public Class1()
-        {
-        }
+        //IAccountService Account { get; } 
     }
 }

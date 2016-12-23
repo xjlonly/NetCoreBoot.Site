@@ -10,6 +10,6 @@ namespace NetCoreBoot.IService
     /// </summary>
     public interface IAccountService
     {
-        bool CheckLogin(string userName, string password);
+        bool CheckLogin(string userName, string password, out string Userid);
     }
 }

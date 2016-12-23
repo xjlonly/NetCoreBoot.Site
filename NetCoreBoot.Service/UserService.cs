@@ -6,7 +6,7 @@ using NetCoreBoot.IService;
 
 namespace NetCoreBoot.Service
 {
-    public class UserService : IUserServices
+    public class UserService :ServiceBase, IUserService
     {
         //public IAccountService Account { get; private set; }
 
