@@ -34,11 +34,13 @@ namespace NetCoreBoot.Admin
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             // Add framework services.
             services.AddMvc();
-            //配置文件读取依赖注入文件
+            //配置服务依赖注入
             var requiredServices = new List<DIService>();
             Configuration.GetSection("DIServices").Bind(requiredServices);
+            //加载程序集
             Assembly asmb_IService = Assembly.Load(new AssemblyName("NetCoreBoot.IService"));
             Assembly asmb_Service = Assembly.Load(new AssemblyName("NetCoreBoot.Service"));
             requiredServices.ForEach(rservice =>

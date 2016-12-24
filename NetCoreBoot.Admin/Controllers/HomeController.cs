@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using NetCoreBoot.IService;
 using NetCoreBoot.Service;
+using Microsoft.Extensions.Configuration;
 
 
 namespace NetCoreBoot.Admin.Controllers
@@ -29,6 +30,10 @@ namespace NetCoreBoot.Admin.Controllers
 
         public IActionResult Index1()
         {
+            var builder = new ConfigurationBuilder();
+            var Config = builder.AddJsonFile($"appsettings.json", optional: true, reloadOnChange: true)?.Build();
+            var cong = Config["DBType"];
+
             string str = String.Empty;
             string userid = "";
             bool result = accountService.CheckLogin("admin", "123456", out userid);

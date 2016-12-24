@@ -16,7 +16,7 @@ namespace NetCoreBoot.Data
         {
             var builder = new ConfigurationBuilder();
             var Config = builder.AddJsonFile($"appsettings.json", optional: true, reloadOnChange: true)?.Build();
-            IConfigurationSection cong = Config.GetSection("DBType");
+            var cong = Config.GetSection("DbType");
             DbType = cong.Value ?? "mysql";
             ConnectionString = Config.GetConnectionString("DefaultConnection") ?? "User ID=root;Password=!@#$%^&*();Host=144.168.56.227;Database=CoreBoot;Pooling=true;";
         }
