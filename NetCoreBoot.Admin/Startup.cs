@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.WebUtilities;
 using NetCoreBoot.IService;
 using NetCoreBoot.Service;
 using Newtonsoft.Json;
@@ -34,7 +36,7 @@ namespace NetCoreBoot.Admin
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            Newtonsoft.Json.Converters.BsonObjectIdConverter
             // Add framework services.
             services.AddMvc();
             //配置服务依赖注入
@@ -79,7 +81,14 @@ namespace NetCoreBoot.Admin
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}.html/{id?}");
+                    template: "{controller}/{action}.html/{id?}"
+                    );
+
+                routes.MapRoute(
+                    name: "replenish",
+                    template: "{controller=Login}/{action=Index}/{id?}"
+                    );
+                    
             });
         }
     }

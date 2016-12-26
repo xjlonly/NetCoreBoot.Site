@@ -1,5 +1,6 @@
 ﻿{
   "dependencies": {
+    "Microsoft.AspNetCore.Authentication.Cookies": "1.1.0",
     "Microsoft.AspNetCore.Diagnostics": "1.0.0",
     "Microsoft.AspNetCore.Mvc": "1.0.1",
     "Microsoft.AspNetCore.Razor.Tools": {
@@ -63,6 +64,8 @@
       "wwwroot",
       "**/*.cshtml",
       "appsettings.json",
+      "diservice.json",
+      "connectionStrings.json",
       "web.config"
     ]
   },
