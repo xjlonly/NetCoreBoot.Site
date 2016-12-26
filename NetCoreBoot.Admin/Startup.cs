@@ -25,7 +25,7 @@ namespace NetCoreBoot.Admin
                 .AddJsonFile($"appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables()
-                .AddJsonFile($"diservice.json", optional:true, reloadOnChange:true);
+                .AddJsonFile($"diservice.json", optional: true, reloadOnChange: true);
             Configuration = builder.Build();
         }
 
@@ -39,7 +39,10 @@ namespace NetCoreBoot.Admin
             services.AddMvc();
             //配置服务依赖注入
             var requiredServices = new List<DIService>();
-            Configuration.GetSection("DIServices").Bind(requiredServices);
+            Configuration.GetSection("DIServices")?.Bind(requiredServices);
+            if (requiredServices == null || requiredServices.Count == 0){
+                throw new Exception("注入服务配置有误，请检查服务配置！");
+            }
             //加载程序集
             Assembly asmb_IService = Assembly.Load(new AssemblyName("NetCoreBoot.IService"));
             Assembly asmb_Service = Assembly.Load(new AssemblyName("NetCoreBoot.Service"));

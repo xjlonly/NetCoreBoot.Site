@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.IO;
 using Chloe;
 using Chloe.MySql;
 using Microsoft.Extensions.Configuration;
@@ -15,9 +12,12 @@ namespace NetCoreBoot.Data
         static DbContextProvider()
         {
             var builder = new ConfigurationBuilder();
-            var Config = builder.AddJsonFile($"appsettings.json", optional: true, reloadOnChange: true)?.Build();
-            var cong = Config.GetSection("DbType");
-            DbType = cong.Value ?? "mysql";
+            var Config = builder.AddInMemoryCollection().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile($"appsettings.json", optional: true, reloadOnChange: true)?.Build();
+            DbType = Config["DBType"];
+            if(string.IsNullOrEmpty(DbType))
+            {
+                throw new System.Exception("数据库配置有误，请检查appsettings.json文件");
+            }
             ConnectionString = Config.GetConnectionString("DefaultConnection") ?? "User ID=root;Password=!@#$%^&*();Host=144.168.56.227;Database=CoreBoot;Pooling=true;";
         }
 
