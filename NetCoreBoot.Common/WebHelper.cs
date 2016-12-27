@@ -36,15 +36,10 @@ namespace NetCoreBoot.Common
         }
 
 
-        public void SetCookie(string key, string value, TimeSpan span)
-        {
-            SetCookie(key, value);
-        }
-
-        public void SetCookie(string key, string value)
+        public void SetCookie(string key, string value, int timespan = 30)
         {
             _responseCookies.Append(key, value, options: new CookieOptions {
-                Expires = DateTime.Now.AddMinutes(30)
+                Expires = DateTime.Now.AddMinutes(timespan)
             });
         }
 
