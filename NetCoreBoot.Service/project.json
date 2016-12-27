@@ -14,7 +14,7 @@
     "ChloeCore.MySql": "2.2.1",
     "NETStandard.Library": "1.6.0",
     "NetCoreBoot.Entity": "1.0.0-*",
-    "NetCoreBoot.DataOper": "1.0.0-*",
+    "NetCoreBoot.Data": "1.0.0-*",
   },
 
   "frameworks": {

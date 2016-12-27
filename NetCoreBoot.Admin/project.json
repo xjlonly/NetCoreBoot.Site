@@ -30,6 +30,12 @@
     "NetCoreBoot.Service": {
       "version": "1.0.0-*",
       "target": "project"
+    },
+    "Microsoft.AspNetCore.Session": "1.1.0",
+    "ZKWeb.System.Drawing": "2.0.1",
+    "NetCoreBoot.Common": {
+      "version": "1.0.0-*",
+      "target": "project"
     }
   },
 
