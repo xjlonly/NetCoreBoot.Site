@@ -6,10 +6,12 @@ using Chloe;
 using NetCoreBoot.Data;
 using Chloe.Infrastructure;
 using System.Data;
+using NetCoreBoot.IService;
+using NetCoreBoot.Entity;
 
 namespace NetCoreBoot.Service
 {
-    public abstract class ServiceBase : IDisposable
+    public abstract class ServiceBase : IDisposable, ISysLogService
     {
         IDbContext _dbContext = null;
 
@@ -95,6 +97,43 @@ namespace NetCoreBoot.Service
             Dispose(true);
             // TODO: 如果在以上内容中替代了终结器，则取消注释以下行。
             // GC.SuppressFinalize(this);
+        }
+
+        void ISysLogService.Log(LogType logtype, string moduleName, bool? result, string description)
+        {
+            throw new NotImplementedException();
+        }
+
+        void ISysLogService.Log(string account, string realName, string ip, LogType logtype, string moduleName, bool? result, string description)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task ISysLogService.LogSync(LogType logtype, string moduleName, bool? result, string description)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task ISysLogService.LogSync(string account, string realName, string ip, LogType logtype, string moduleName, bool? result, string description)
+        {
+            throw new NotImplementedException();
+        }
+
+        Sys_Log CreateLog(string account, string realName, string ip, LogType logType, string moduleName, bool? result, string description)
+        {
+            Sys_Log entity = new Sys_Log();
+
+            entity.F_Account = account;
+            entity.F_ModuleName = moduleName;
+            entity.F_Type = logType.ToString();
+            entity.F_NickName = moduleName;
+            entity.F_IPAddress = ip;
+            entity.Result = result;
+            entity.Description = description;
+
+            entity.CreationTime = DateTime.Now;
+
+            return entity;
         }
         #endregion
 

@@ -1,5 +1,5 @@
 ﻿{
   "ConnectionStrings": {
-    "DefaultConnection": "User ID=root;Password=!@#$%^&*();Host=144.168.56.227;Database=CoreBoot;Pooling=true;"
+    "DefaultConnection": "User ID=netcoreboot;Password=12345ok!@#$%;Host=144.168.56.227;Database=CoreBoot;Pooling=true;"
   }
 }

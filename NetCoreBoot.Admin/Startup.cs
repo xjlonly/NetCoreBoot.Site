@@ -56,14 +56,13 @@ namespace NetCoreBoot.Admin
             //注入HttpContextAccessor
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-            //注入session操作服务
+            //注入公共操作服务
             services.AddTransient<WebHelper>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IServiceProvider isp)
         {
-            
 
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -77,7 +76,7 @@ namespace NetCoreBoot.Admin
             {
                 app.UseExceptionHandler("/Home/Error.html");
             }
-
+            Common.HttpContext.ServiceProvider = isp;
             app.UseStaticFiles();
             app.UseSession();
             app.UseMvc(routes =>

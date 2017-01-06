@@ -5,32 +5,57 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using NetCoreBoot.Common;
-
-// For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+using System.Security.Cryptography;
 
 namespace NetCoreBoot.Admin.Controllers
 {
-    public class LoginController : Controller
+    public class LoginController : NetCoreBoot.Common.BaseController
     {
 
-
-        private readonly WebHelper _userFactory;
+        private readonly WebHelper _webHelper;
+        private readonly string cookie_key = "login_auth_code";
         public LoginController(WebHelper helper)
         {
-            this._userFactory = helper;
+            this._webHelper = helper;
         }
 
-        // GET: /<controller>/
+
+        [HttpGet]
         public IActionResult Index()
-        { 
-
-            return View();
-        }
-
-        
-        public IActionResult GetAuthCode()
         {
             return View();
         }
+
+        [HttpGet]
+        public IActionResult GetAuthCode()
+        {
+            string code = string.Empty;
+            byte[] imgs = VerifyCodeHelper.GetVerifyCode(out code);
+            _webHelper.SetCookie(cookie_key, _webHelper.MD5(code.ToLower()), 10);
+            return new FileContentResult(imgs, @"image/Gif");
+        }
+
+        [HttpPost]
+        public IActionResult CheckLogin(string username, string password, string code)
+        {
+            if(string.IsNullOrEmpty(code))
+            {
+                return this.FailedMsg("请输入验证码!");
+            }
+            if(string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                return this.FailedMsg("请输入用户名或密码!");
+            }
+
+            string cikcode = _webHelper.GetCookie(cookie_key);
+            _webHelper.RemoveCookie(cookie_key);
+            if(_webHelper.MD5(cikcode.ToLower()) != cikcode)
+            {
+                return this.FailedMsg("验证码输入错误，请重新输入！");
+            }
+
+        }
+
+
     }
 }

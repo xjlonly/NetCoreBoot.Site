@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore;
-using System.Security.Claims;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace NetCoreBoot.Common
 {
@@ -48,6 +49,28 @@ namespace NetCoreBoot.Common
             string value = string.Empty;
             bool result = _requestCookies.TryGetValue(key, out value);
             return value;
+        }
+
+        public void RemoveCookie(string key)
+        {
+            _responseCookies.Append(key, "", options: new CookieOptions
+            {
+                Expires = DateTime.Now.AddMilliseconds(1)
+            });
+        }
+
+        /// <summary>
+        /// MD5加密算法
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public string MD5(string input)
+        {
+            using (var md5 = System.Security.Cryptography.MD5.Create())
+            {
+                var result = md5.ComputeHash(Encoding.UTF8.GetBytes(input));
+                return BitConverter.ToString(result);
+            }
         }
     }
 }
