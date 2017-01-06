@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net.Sockets;
 using System.Net;
 using System.Net.NetworkInformation;
+using System.Text;
 
 namespace NetCoreBoot.Common
 {
@@ -85,8 +86,8 @@ namespace NetCoreBoot.Common
             try
             {
                 string url = "http://apis.juhe.cn/ip/ip2addr?ip=" + ip + "&dtype=json&key=b39857e36bee7a305d55cdb113a9d725";
-                res = HttpMethods.HttpGet(url);
-                var resjson = res.ToObject<objex>();
+                res = HttpMethod.HttpGet(url);
+                var resjson = res.Deserialize<objex>();
                 res = resjson.result.area + " " + resjson.result.location;
             }
             catch
@@ -100,8 +101,8 @@ namespace NetCoreBoot.Common
             try
             {
                 string url = "https://sp0.baidu.com/8aQDcjqpAAV3otqbppnN2DJv/api.php?query=" + ip + "&resource_id=6006&ie=utf8&oe=gbk&format=json";
-                res = HttpMethods.HttpGet(url, Encoding.GetEncoding("GBK"));
-                var resjson = res.ToObject<obj>();
+                res = HttpMethod.HttpGet(url, Encoding.GetEncoding("GBK"));
+                var resjson = res.Deserialize<obj>();
                 res = resjson.data[0].location;
             }
             catch
