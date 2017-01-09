@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using NetCoreBoot.Common;
 
-namespace NetCoreBoot.CommonApplication.BaseController
-{
-    public abstract class BaseController : Controller
+namespace NetCoreBoot.CommonApplication
+{ 
+    public abstract class WebController : Controller
     {
 
         protected ContentResult JsonContent(object obj)

@@ -117,7 +117,7 @@ namespace NetCoreBoot.Service
             });
         }
 
-        Sys_Log CreateLog(string userid, string account, string realName, string ip, LogType logType, string moduleName, bool? result, string description, string moduleId="")
+        private Sys_Log CreateLog(string userid, string account, string realName, string ip, LogType logType, string moduleName, bool? result, string description, string moduleId="")
         {
             Sys_Log entity = new Sys_Log
             {

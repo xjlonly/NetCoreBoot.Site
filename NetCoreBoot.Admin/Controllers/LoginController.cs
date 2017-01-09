@@ -4,12 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
+using NetCoreBoot.CommonApplication;
 using NetCoreBoot.Common;
-using System.Security.Cryptography;
 
 namespace NetCoreBoot.Admin.Controllers
 {
-    public class LoginController : NetCoreBoot.Common.BaseController
+    public class LoginController : WebController
     {
 
         private readonly WebHelper _webHelper;
@@ -53,7 +53,7 @@ namespace NetCoreBoot.Admin.Controllers
             {
                 return this.FailedMsg("验证码输入错误，请重新输入！");
             }
-
+            return View();
         }
 
 
