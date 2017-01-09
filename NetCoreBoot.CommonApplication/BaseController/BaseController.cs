@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using NetCoreBoot.Common;
 
-namespace NetCoreBoot.Common
+namespace NetCoreBoot.CommonApplication.BaseController
 {
-    public abstract class BaseController :Controller
+    public abstract class BaseController : Controller
     {
-        
+
         protected ContentResult JsonContent(object obj)
         {
             var result = JsonHelper.Serialize(obj);
@@ -51,6 +52,27 @@ namespace NetCoreBoot.Common
         {
             Result retResult = new Result(ResultStatus.Failed, msg);
             return this.JsonContent(retResult);
+        }
+
+        LoginCookie _cookie;
+        public LoginCookie CurrentCookie
+        {
+            get
+            {
+                if(this._cookie != null)
+                {
+                    return this._cookie;
+                }
+                var currentCookie = AdminUtils.GetCurrentCookie();
+                this._cookie = currentCookie;
+                return this._cookie;
+            }
+            set
+            {
+                LoginCookie cookie = value;
+                AdminUtils.SetLoginCookie(cookie);
+                this._cookie = cookie;
+            }
         }
     }
 }

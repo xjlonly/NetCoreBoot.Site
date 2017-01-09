@@ -20,5 +20,15 @@ namespace NetCoreBoot.Common
                 return context;
             }
         }
+
+        public static Http.IHttpContextAccessor Accessor
+        {
+            get
+            {
+                object factory = ServiceProvider.GetService(typeof(Http.IHttpContextAccessor));
+                var accessor = (Http.IHttpContextAccessor)factory;
+                return accessor;
+            }
+        }
     }
 }

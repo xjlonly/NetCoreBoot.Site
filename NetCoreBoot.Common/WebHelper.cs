@@ -51,12 +51,23 @@ namespace NetCoreBoot.Common
             return value;
         }
 
+
+
         public void RemoveCookie(string key)
         {
             _responseCookies.Append(key, "", options: new CookieOptions
             {
                 Expires = DateTime.Now.AddMilliseconds(1)
             });
+        }
+
+        /// <summary>
+        /// 是否是Ajax请求
+        /// </summary>
+        /// <returns></returns>
+        public static bool IsAjax()
+        {
+            return HttpContext.Context.Request.Headers["X-Requested-With"] == "XMLHttpRequest";
         }
 
         /// <summary>

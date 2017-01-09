@@ -37,7 +37,8 @@
       "version": "1.0.0-*",
       "target": "project"
     },
-    "System.Net.NameResolution": "4.3.0"
+    "System.Net.NameResolution": "4.3.0",
+    "NetCoreBoot.CommonApplication": "1.0.0-*"
   },
 
   "tools": {

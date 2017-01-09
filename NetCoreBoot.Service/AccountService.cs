@@ -8,7 +8,7 @@ using Chloe;
 
 namespace NetCoreBoot.Service
 {
-    public class AccountService : ServiceBase, IAccountService
+    public class AccountService : BaseService, IAccountService
     {
 
         bool IAccountService.CheckLogin(string userName, string password, out string Userid)

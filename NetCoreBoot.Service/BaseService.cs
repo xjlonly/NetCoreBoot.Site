@@ -11,17 +11,17 @@ using NetCoreBoot.Entity;
 
 namespace NetCoreBoot.Service
 {
-    public abstract class ServiceBase : IDisposable, ISysLogService
+    public abstract class BaseService : IDisposable, ISysLogService
     {
         IDbContext _dbContext = null;
 
-        protected ServiceBase() 
+        protected BaseService() 
             :this(null)
         {
 
         }
 
-        public ServiceBase(object p)
+        public BaseService(object p)
         {
             this.p = p;
         }
@@ -99,39 +99,39 @@ namespace NetCoreBoot.Service
             // GC.SuppressFinalize(this);
         }
 
-        void ISysLogService.Log(LogType logtype, string moduleName, bool? result, string description)
+
+        void ISysLogService.Log(string userid, string account, string realName, string ip, LogType logType, string moduleName, bool? result, string description)
         {
-            throw new NotImplementedException();
+            Sys_Log log = this.CreateLog(userid, account, realName, ip, logType, moduleName, result, description);
+            this.DbContext.Insert(log);
         }
 
-        void ISysLogService.Log(string account, string realName, string ip, LogType logtype, string moduleName, bool? result, string description)
+
+        Task ISysLogService.LogSync(string userid,string account, string realName, string ip, LogType logType, string moduleName, bool? result, string description)
         {
-            throw new NotImplementedException();
+            Sys_Log log = this.CreateLog(userid, account, realName, ip, logType, moduleName, result, description);
+
+            return this.DoAsync(dbContext =>
+            {
+                dbContext.Insert(log);
+            });
         }
 
-        Task ISysLogService.LogSync(LogType logtype, string moduleName, bool? result, string description)
+        Sys_Log CreateLog(string userid, string account, string realName, string ip, LogType logType, string moduleName, bool? result, string description, string moduleId="")
         {
-            throw new NotImplementedException();
-        }
-
-        Task ISysLogService.LogSync(string account, string realName, string ip, LogType logtype, string moduleName, bool? result, string description)
-        {
-            throw new NotImplementedException();
-        }
-
-        Sys_Log CreateLog(string account, string realName, string ip, LogType logType, string moduleName, bool? result, string description)
-        {
-            Sys_Log entity = new Sys_Log();
-
-            entity.F_Account = account;
-            entity.F_ModuleName = moduleName;
-            entity.F_Type = logType.ToString();
-            entity.F_NickName = moduleName;
-            entity.F_IPAddress = ip;
-            entity.Result = result;
-            entity.Description = description;
-
-            entity.CreationTime = DateTime.Now;
+            Sys_Log entity = new Sys_Log
+            {
+                F_Account = account,
+                F_ModuleId = moduleId,
+                F_Result = result,
+                F_CreatorTime = DateTime.Now,
+                F_CreatorUserId = userid,
+                F_Description = description,
+                F_IPAddress = ip,
+                F_Type = logType.ToString(),
+                F_NickName = realName,
+                F_ModuleName = moduleName,
+            };
 
             return entity;
         }
