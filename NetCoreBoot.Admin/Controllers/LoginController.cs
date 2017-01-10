@@ -38,7 +38,7 @@ namespace NetCoreBoot.Admin.Controllers
         {
             string code = string.Empty;
             byte[] imgs = VerifyCodeHelper.GetVerifyCode(out code);
-            _webHelper.SetCookie(cookie_key, _webHelper.MD5(code.ToLower()), 10);
+            _webHelper.SetCookie(cookie_key, Hash.MD5(code.ToLower()), 10);
             return new FileContentResult(imgs, @"image/Gif");
         }
 
@@ -56,7 +56,7 @@ namespace NetCoreBoot.Admin.Controllers
 
             string cikcode = _webHelper.GetCookie(cookie_key);
             _webHelper.RemoveCookie(cookie_key);
-            if(_webHelper.MD5(cikcode.ToLower()) != cikcode)
+            if( Hash.MD5(cikcode.ToLower()) != cikcode)
             {
                 return this.FailedMsg("验证码输入错误，请重新输入！");
             }

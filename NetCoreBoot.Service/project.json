@@ -12,7 +12,7 @@
     },
     "ChloeCore": "2.2.1",
     "ChloeCore.MySql": "2.2.1",
-    "NETStandard.Library": "1.6.0",
+    "NETStandard.Library": "1.6.1",
     "NetCoreBoot.Entity": "1.0.0-*",
     "NetCoreBoot.Data": "1.0.0-*",
     "NetCoreBoot.Common": "1.0.0-*",

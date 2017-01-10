@@ -70,18 +70,6 @@ namespace NetCoreBoot.Common
             return HttpContext.Context.Request.Headers["X-Requested-With"] == "XMLHttpRequest";
         }
 
-        /// <summary>
-        /// MD5加密算法
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        public string MD5(string input)
-        {
-            using (var md5 = System.Security.Cryptography.MD5.Create())
-            {
-                var result = md5.ComputeHash(Encoding.UTF8.GetBytes(input));
-                return BitConverter.ToString(result);
-            }
-        }
+        
     }
 }

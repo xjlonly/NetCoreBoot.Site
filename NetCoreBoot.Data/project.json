@@ -3,7 +3,7 @@
     "ChloeCore": "2.2.1",
     "ChloeCore.MySql": "2.2.1",
     "MySql.Data": "7.0.6-IR31",
-    "NETStandard.Library": "1.6.0"
+    "NETStandard.Library": "1.6.1"
   },
   "frameworks": {
     "netstandard1.6": {

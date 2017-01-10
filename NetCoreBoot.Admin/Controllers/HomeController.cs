@@ -35,7 +35,7 @@ namespace NetCoreBoot.Admin.Controllers
         {
             string str = String.Empty;
             string userid = "";
-            bool result = accountService.CheckLogin("admin", "123456", out userid);
+            
             webHelper.SetCookie("SET", userid);
             str = $"serviceProvider.GetService<IUserServices>():{result}";
             str += $"/r<br/>serviceProvider.GetService<IAccountService>(): {userid}";

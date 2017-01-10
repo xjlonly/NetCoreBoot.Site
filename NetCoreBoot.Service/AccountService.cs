@@ -11,28 +11,34 @@ namespace NetCoreBoot.Service
 {
     public class AccountService : BaseService, IAccountService
     {
-
-        bool IAccountService.CheckLogin(string userName, string password, out Sys_User userInfo, out string msg)
+        bool IAccountService.CheckLogin(string userName, string passWord, out Sys_User userInfo, out string msg)
         {
             userName.NotNullOrEmpty();
-            password.NotNullOrEmpty();
+            passWord.NotNullOrEmpty();
 
             userInfo = null;
             msg = null;
             Sys_User sys_user = this.Query<Sys_User>().Where(x => x.F_Account == userName).FirstOrDefault();
-            if(sys_user.NotNull())
+            userInfo = sys_user;
+            if (sys_user.NotNull())
             {
-              if(sys_user.F_EnabledMark)
+              if(sys_user.F_EnabledMark == true)
               {
-
-              }  
+                    
+                    this.Query<UserLogOnEntity>().Where(p => p.F_Id == sys_user.F_Id).FirstOrDefault();
+                    
+              }
+              else
+                {
+                    msg = "账户被系统锁定,请联系管理员!";
+                }
             }
             else
             {
                 msg = "账户或密码错误!";
             }
-            userInfo = sys_user;
-            msg = "";
+            
+
             return true;
         }
 
