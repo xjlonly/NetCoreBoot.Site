@@ -43,6 +43,11 @@ namespace NetCoreBoot.Service
             }
         }
 
+        public IQuery<T> Query<T>() where T : new ()
+        {
+            return DbContext.Query<T>();
+        }
+
         //异步任务，主要进行日志操作
         public Task DoAsync(Action<IDbContext> act, bool? startTransaction = null)
         {

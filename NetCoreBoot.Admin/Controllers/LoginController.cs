@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using NetCoreBoot.CommonApplication;
 using NetCoreBoot.Common;
+using NetCoreBoot.IService;
+using NetCoreBoot.Entity;
 
 namespace NetCoreBoot.Admin.Controllers
 {
@@ -14,9 +16,14 @@ namespace NetCoreBoot.Admin.Controllers
 
         private readonly WebHelper _webHelper;
         private readonly string cookie_key = "login_auth_code";
-        public LoginController(WebHelper helper)
+        private IAccountService _accountService { get; set; }
+
+        private IUserService _userServices { get; set; }
+        public LoginController(WebHelper helper, IAccountService accountService, IUserService userService)
         {
             this._webHelper = helper;
+            this._accountService = accountService;
+            this._userServices = userService;
         }
 
 
@@ -53,7 +60,28 @@ namespace NetCoreBoot.Admin.Controllers
             {
                 return this.FailedMsg("验证码输入错误，请重新输入！");
             }
-            return View();
+            Sys_User userInfo = new Sys_User();
+            string msg = string.Empty;
+            if(!_accountService.CheckLogin(username, password, out userInfo, out msg))
+            {
+                return this.FailedMsg(msg);
+            }
+
+            this.CurrentCookie = new LoginCookie
+            {
+                Account = userInfo.F_Account,
+                DepartmentId = userInfo.F_DepartmentId,
+                DutyId = userInfo.F_DutyId,
+                IsAdmin = userInfo.F_Account == "admin" ? true : false,
+                LoginTime = DateTime.Now,
+                RealName = userInfo.F_RealName,
+                UserId = userInfo.F_Id,
+                RoleId = userInfo.F_RoleId
+            };
+
+            _accountService.LogSync(userInfo.F_Id, userInfo.F_Account, userInfo.F_RealName, NetHelper.Ip, LogType.Login, "登录", true, "登录成功");
+
+            return this.SuccessMsg(msg);
         }
 
 
