@@ -29,6 +29,8 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "NetCoreBoot.Data", "NetCore
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "NetCoreBoot.CommonApplication", "NetCoreBoot.CommonApplication\NetCoreBoot.CommonApplication.xproj", "{3F8ACD83-87E5-4451-8BFD-4C942849DC4A}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "MSTest", "MSTest\MSTest.xproj", "{D7830194-7662-46A9-8C45-6F6EF7674033}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{3F8ACD83-87E5-4451-8BFD-4C942849DC4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F8ACD83-87E5-4451-8BFD-4C942849DC4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F8ACD83-87E5-4451-8BFD-4C942849DC4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7830194-7662-46A9-8C45-6F6EF7674033}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7830194-7662-46A9-8C45-6F6EF7674033}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7830194-7662-46A9-8C45-6F6EF7674033}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7830194-7662-46A9-8C45-6F6EF7674033}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,5 +86,6 @@ Global
 		{3E8D1381-A762-4D12-8675-1EAE43DD0FF0} = {7A5AC5C9-66D4-4444-9F5C-2D7C2CFDD73D}
 		{2A5C486C-A4F5-44B1-B267-42829870E782} = {D08E2BB2-D757-4C3B-9778-2E1BB14B8907}
 		{3F8ACD83-87E5-4451-8BFD-4C942849DC4A} = {7A5AC5C9-66D4-4444-9F5C-2D7C2CFDD73D}
+		{D7830194-7662-46A9-8C45-6F6EF7674033} = {91809812-EEB1-4742-8791-22C24B119B0D}
 	EndGlobalSection
 EndGlobal
