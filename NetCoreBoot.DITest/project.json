@@ -9,7 +9,9 @@
       "type": "platform",
       "version": "1.0.1"
     },
-    "NetCoreBoot.Common": "1.0.0-*"
+    "NetCoreBoot.Common": "1.0.0-*",
+    "NetCoreBoot.Data": "1.0.0-*",
+    "NetCoreBoot.Entity": "1.0.0-*"
   },
 
   "frameworks": {

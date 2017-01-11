@@ -43,12 +43,13 @@ namespace NetCoreBoot.Common
                         encrypted = msEncrypt.ToArray();
                     }
                 }
-                StringBuilder ret = new StringBuilder();
-                foreach (byte b in encrypted)
-                {
-                    ret.AppendFormat("{0:X2}", b);
-                }
-                return ret.ToString();
+                //StringBuilder ret = new StringBuilder();
+                //foreach (byte b in encrypted)
+                //{
+                //    ret.AppendFormat("{0:X2}", b);
+                //}
+                //return ret.ToString();
+                return Convert.ToBase64String(encrypted);
             }
         }
 
@@ -61,14 +62,15 @@ namespace NetCoreBoot.Common
             if (keys == null || keys.Length < 8)
                 throw new ArgumentNullException("keys");
 
-            int length = plainText.Length / 2;
-            byte[] inputBytes = new byte[length];
-            int x, i;
-            for(x = 0; x < length; x++)
-            {
-                i = Convert.ToInt32(plainText.Substring(x * 2, 2), 16);
-                inputBytes[i] = (byte)i;
-            }
+            //int length = plainText.Length / 2;
+            //byte[] inputBytes = new byte[length];
+            //int x, i;
+            //for(x = 0; x < length; x++)
+            //{
+            //    i = Convert.ToInt32(plainText.Substring(x * 2, 2), 16);
+            //    inputBytes[x] = (byte)i;
+            //}
+            byte[] inputBytes = Convert.FromBase64String(plainText);
             string result;
             using (var aesAlg = System.Security.Cryptography.Aes.Create())
             {
@@ -105,7 +107,7 @@ namespace NetCoreBoot.Common
             {
                 throw new ArgumentNullException("key", "Aes密钥不能为空");
             }
-            int bitNum = num.ToInt();
+            int bitNum = (int)num;
             if(key.Length < bitNum)
             {
                 key = key.PadRight(bitNum, '0');

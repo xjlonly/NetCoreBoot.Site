@@ -18,7 +18,7 @@ namespace NetCoreBoot.Data
             {
                 throw new System.Exception("数据库配置有误，请检查appsettings.json文件");
             }
-            ConnectionString = Config.GetConnectionString("DefaultConnection") ?? "User ID=root;Password=!@#$%^&*();Host=144.168.56.227;Database=CoreBoot;Pooling=true;";
+            ConnectionString = Config?.GetConnectionString("DefaultConnection") ?? "User ID=root;Password=!@#$%^&*();Host=144.168.56.227;Database=CoreBoot;Pooling=true;";
         }
 
         public static IDbContext CreateContext()
