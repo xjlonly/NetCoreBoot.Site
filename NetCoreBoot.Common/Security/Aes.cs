@@ -6,7 +6,7 @@ using System.Text;
 using System.IO;
 using System.Security.Cryptography;
 
-namespace NetCoreBoot.Common.Security
+namespace NetCoreBoot.Common
 {
     public class Aes
     {
@@ -26,8 +26,8 @@ namespace NetCoreBoot.Common.Security
             using (var aesAlg = System.Security.Cryptography.Aes.Create())
             {
                 //设置密钥及算法初始化向量
-                aesAlg.Key = GeyAesKey(keys);
-                aesAlg.IV = GeyAesKey(keys);
+                aesAlg.Key = GetAesKeyOrIV(keys, BitNum.Key);
+                aesAlg.IV = GetAesKeyOrIV(keys, BitNum.IV);
                 //创建加密器对象
                 ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
                 byte[] encrypted;
@@ -73,8 +73,8 @@ namespace NetCoreBoot.Common.Security
             using (var aesAlg = System.Security.Cryptography.Aes.Create())
             {
                 //设置算法密钥及算法初始化向量
-                aesAlg.Key = GeyAesKey(keys);
-                aesAlg.IV = GeyAesKey(keys);
+                aesAlg.Key = GetAesKeyOrIV(keys, BitNum.Key);
+                aesAlg.IV = GetAesKeyOrIV(keys, BitNum.IV);
                 //创建解密器对象
                 ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
                 //创建用于解密的流
@@ -95,25 +95,34 @@ namespace NetCoreBoot.Common.Security
         }
 
         /// <summary>
-        /// 获取AES密钥 不够32位的密钥补上0,超出32位则截取前32位
+        /// 获取AES密钥及初始化向量 不够位数的补上0,超出位数位则截取相应的位数
         /// </summary>
         /// <param name="key">原始密钥</param>
         /// <returns></returns>
-        private static byte[] GeyAesKey(string key)
+        private static byte[] GetAesKeyOrIV(string key, BitNum num)
         {
             if (string.IsNullOrEmpty(key))
             {
                 throw new ArgumentNullException("key", "Aes密钥不能为空");
             }
-            if(key.Length < 32)
+            int bitNum = num.ToInt();
+            if(key.Length < bitNum)
             {
-                key = key.PadRight(32, '0');
+                key = key.PadRight(bitNum, '0');
             }
-            if(key.Length > 32)
+            if(key.Length > bitNum)
             {
-                key = key.Substring(0, 32);
+                key = key.Substring(0, bitNum);
             }
             return Encoding.UTF8.GetBytes(key);
         }
+
+
+    }
+
+    public enum BitNum
+    {
+        Key = 32,
+        IV = 16
     }
 }
