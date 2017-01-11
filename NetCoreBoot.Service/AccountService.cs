@@ -22,13 +22,22 @@ namespace NetCoreBoot.Service
             userInfo = sys_user;
             if (sys_user.NotNull())
             {
-              if(sys_user.F_EnabledMark == true)
-              {
+                if(sys_user.F_EnabledMark == true)
+                {
                     
-                    this.Query<UserLogOnEntity>().Where(p => p.F_Id == sys_user.F_Id).FirstOrDefault();
-                    
-              }
-              else
+                    UserLogOnEntity userLogOnEntity =  this.Query<UserLogOnEntity>().Where(p => p.F_Id == sys_user.F_Id).FirstOrDefault();
+                    string desString = Des.Encrypt(passWord.ToLower(), userLogOnEntity.F_UserSecretkey).ToLower();
+                    string endbPassword = Hash.MD5(desString);
+                    if(endbPassword == userLogOnEntity.F_UserPassword)
+                    {
+                        DateTime dateTime = DateTime.Now;
+                        userLogOnEntity.F_PreviousVisitTime = userLogOnEntity.F_LastVisitTime.NotNull() ? userLogOnEntity.F_LastVisitTime.to;
+                        userLogOnEntity.F_LastVisitTime = DateTime.Now;
+                        userLogOnEntity.F_LogOnCount += 1;
+                    }
+                            
+                }
+                else
                 {
                     msg = "账户被系统锁定,请联系管理员!";
                 }

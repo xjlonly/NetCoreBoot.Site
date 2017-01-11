@@ -37,7 +37,7 @@ namespace NetCoreBoot.Admin.Controllers
             string userid = "";
             
             webHelper.SetCookie("SET", userid);
-            str = $"serviceProvider.GetService<IUserServices>():{result}";
+            //str = $"serviceProvider.GetService<IUserServices>():{result}";
             str += $"/r<br/>serviceProvider.GetService<IAccountService>(): {userid}";
             str += $"<><><><>>>>>>>>>>>>>>>>{webHelper.GetCookie("SET")}";
             ViewBag.STR = str;

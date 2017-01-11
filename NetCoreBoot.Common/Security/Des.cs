@@ -12,8 +12,14 @@ namespace NetCoreBoot.Common
 {
     public class Des
     {
-        IBlockCipher engine = new DesEngine();
-        public string Encrypt(string plainText, string keys)
+        private  static IBlockCipher engine = new DesEngine();
+        /// <summary>
+        /// DES加密 key输入密码的时候，必须使用英文字符，区分大小写，且字符数量是8个，不能多也不能少
+        /// </summary>
+        /// <param name="plainText">待加密字符串</param>
+        /// <param name="keys">密钥</param>
+        /// <returns></returns>
+        public static string Encrypt(string plainText, string keys)
         {
 
             byte[] ptBytes = Encoding.UTF8.GetBytes(plainText);
@@ -26,7 +32,7 @@ namespace NetCoreBoot.Common
             return ret.ToString();
         }
 
-        private byte[] Encrypt(string keys, byte[] ptBytes)
+        private static byte[] Encrypt(string keys, byte[] ptBytes)
         {
             //byte[] key = Encoding.UTF8.GetBytes(keys);
             byte[] key = Encoding.UTF8.GetBytes(Hash.MD5(keys).Substring(0, 8));
@@ -39,5 +45,42 @@ namespace NetCoreBoot.Common
             return rv;
         }
 
+
+        /// <summary>
+        /// 使用DES解密，key输入密码的时候，必须使用英文字符，区分大小写，且字符数量是8个，不能多也不能少
+        /// </summary>
+        /// <param name="cipherText">需要加密的字符串</param>
+        /// <param name="keys">加密字符串的密钥</param>
+        /// <returns>解密后的字符串</returns>
+        public static string Decrypt(string cipherText, string keys)
+        {
+            byte[] inputByteArray = new byte[cipherText.Length / 2];
+            for (int x = 0; x < cipherText.Length / 2; x++)
+            {
+                int i = (Convert.ToInt32(cipherText.Substring(x * 2, 2), 16));
+                inputByteArray[x] = (byte)i;
+            }
+            var rv = Decrypt(keys, inputByteArray);
+
+            return Encoding.UTF8.GetString(rv);
+
+        }
+
+        private static byte[] Decrypt(string keys, byte[] cipherText)
+        {
+            //byte[] key = Encoding.UTF8.GetBytes(keys);
+            byte[] key = Encoding.UTF8.GetBytes(Hash.MD5(keys).Substring(0, 8));
+            BufferedBlockCipher cipher = new PaddedBufferedBlockCipher(new CbcBlockCipher(engine));
+            cipher.Init(false, new ParametersWithIV(new DesParameters(key), key));
+            byte[] rv = new byte[cipher.GetOutputSize(cipherText.Length)];
+            int tam = cipher.ProcessBytes(cipherText, 0, cipherText.Length, rv, 0);
+
+            cipher.DoFinal(rv, tam);
+
+            return rv;
+        }
+
     }
+
 }
+
