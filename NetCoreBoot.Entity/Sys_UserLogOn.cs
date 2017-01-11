@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace NetCoreBoot.Entity
 {
-    public class UserLogOnEntity
+    public class Sys_UserLogOn
     {
         public string F_Id { get; set; }
         public string F_UserId { get; set; }

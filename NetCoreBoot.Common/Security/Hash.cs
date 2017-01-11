@@ -19,7 +19,7 @@ namespace NetCoreBoot.Common
             {
                 encode = encode.NotNull() ? encode : Encoding.UTF8;
                 var result = md5.ComputeHash(encode.GetBytes(input));
-                return BitConverter.ToString(result);
+                return BitConverter.ToString(result).Replace("-","");
             }
            
         }

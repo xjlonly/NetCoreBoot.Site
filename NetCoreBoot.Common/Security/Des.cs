@@ -34,8 +34,8 @@ namespace NetCoreBoot.Common
 
         private static byte[] Encrypt(string keys, byte[] ptBytes)
         {
-            //byte[] key = Encoding.UTF8.GetBytes(keys);
-            byte[] key = Encoding.UTF8.GetBytes(Hash.MD5(keys).Substring(0, 8));
+            byte[] key = Encoding.UTF8.GetBytes(keys);
+            //byte[] key = Encoding.UTF8.GetBytes(Hash.MD5(keys).Substring(0, 8));
             BufferedBlockCipher cipher = new PaddedBufferedBlockCipher(new CbcBlockCipher(engine), new Pkcs7Padding());
             cipher.Init(true, new ParametersWithIV(new DesParameters(key), key));
             byte[] rv = new byte[cipher.GetOutputSize(ptBytes.Length)];
@@ -68,8 +68,8 @@ namespace NetCoreBoot.Common
 
         private static byte[] Decrypt(string keys, byte[] cipherText)
         {
-            //byte[] key = Encoding.UTF8.GetBytes(keys);
-            byte[] key = Encoding.UTF8.GetBytes(Hash.MD5(keys).Substring(0, 8));
+            byte[] key = Encoding.UTF8.GetBytes(keys);
+            //byte[] key = Encoding.UTF8.GetBytes(Hash.MD5(keys).Substring(0, 8));
             BufferedBlockCipher cipher = new PaddedBufferedBlockCipher(new CbcBlockCipher(engine));
             cipher.Init(false, new ParametersWithIV(new DesParameters(key), key));
             byte[] rv = new byte[cipher.GetOutputSize(cipherText.Length)];

@@ -11,7 +11,7 @@ namespace NetCoreBoot.Common
     {
         public static bool NotNull<T>(this T val)
         {
-            return val != null ? false : true; 
+            return val == null ? false : true; 
         }
         public static void NotNull<T>(this T val, string errorMsg = null)
         {

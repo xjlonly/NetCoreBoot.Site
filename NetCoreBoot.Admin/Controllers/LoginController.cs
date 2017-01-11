@@ -56,7 +56,7 @@ namespace NetCoreBoot.Admin.Controllers
 
             string cikcode = _webHelper.GetCookie(cookie_key);
             _webHelper.RemoveCookie(cookie_key);
-            if( Hash.MD5(cikcode.ToLower()) != cikcode)
+            if( Hash.MD5(code.ToLower()) != cikcode)
             {
                 return this.FailedMsg("验证码输入错误，请重新输入！");
             }
