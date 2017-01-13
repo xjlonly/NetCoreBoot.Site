@@ -101,7 +101,7 @@
                             data: { username: $.trim($username.val()), password: $.md5($.trim($password.val())), code: $.trim($code.val()) },
                             type: "post",
                             dataType: "json",
-                            timeout:5000,
+                            timeout:10000,
                             success: function (data) {
                                 if (data.Status == "100") {
                                     $("#login_button").find('span').html("登录成功，正在跳转...");
