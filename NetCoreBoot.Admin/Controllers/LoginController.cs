@@ -45,7 +45,7 @@ namespace NetCoreBoot.Admin.Controllers
         [HttpPost]
         public IActionResult CheckLogin(string username, string password, string code)
         {
-            if(string.IsNullOrEmpty(code))
+            if (string.IsNullOrEmpty(code))
             {
                 return this.FailedMsg("请输入验证码!");
             }

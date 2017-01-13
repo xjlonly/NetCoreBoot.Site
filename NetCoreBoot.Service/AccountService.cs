@@ -28,7 +28,7 @@ namespace NetCoreBoot.Service
 
                     Sys_UserLogOn userLogOnEntity =  this.Query<Sys_UserLogOn>().Where(p => p.F_Id == sys_user.F_Id).FirstOrDefault();
                     this.DbContext.TrackEntity(userLogOnEntity);
-                    string desString = Aes.Encrypt(passWord.ToLower(), userLogOnEntity.F_UserSecretkey).ToLower();
+                    string desString = Aes.Encrypt(passWord.ToLower(), userLogOnEntity.F_UserSecretkey);
                     string endbPassword = Hash.MD5(desString);
                     if(endbPassword == userLogOnEntity.F_UserPassword)
                     {

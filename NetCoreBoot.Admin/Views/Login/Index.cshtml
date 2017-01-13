@@ -101,9 +101,9 @@
                             data: { username: $.trim($username.val()), password: $.md5($.trim($password.val())), code: $.trim($code.val()) },
                             type: "post",
                             dataType: "json",
-                            timeout:1000,
+                            timeout:5000,
                             success: function (data) {
-                                if (data.state == "success") {
+                                if (data.Status == "100") {
                                     $("#login_button").find('span').html("登录成功，正在跳转...");
                                     window.setTimeout(function () {
                                         window.location.href = "/Home/Index.html";
@@ -112,9 +112,14 @@
                                     $("#login_button").removeAttr('disabled').find('span').html("登录");
                                     $("#switchCode").trigger("click");
                                     $code.val('');
-                                    $.login.formMessage(data.message);
+                                    $.login.formMessage(data.Msg);
                                 }
+                            },
+                            error:function(){
+                                $("#login_button").removeAttr('disabled').find('span').html("登录");
+                                $.login.formMessage("登录超时");
                             }
+                            
                         });
                     }
                 },

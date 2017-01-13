@@ -2,6 +2,8 @@
   "version": "1.0.0-*",
 
   "dependencies": {
+    "ChloeCore": "2.3.0",
+    "ChloeCore.MySql": "2.3.0",
     "NETStandard.Library": "1.6.1",
     "System.ComponentModel.Primitives": "4.3.0-preview1-24530-04"
   },

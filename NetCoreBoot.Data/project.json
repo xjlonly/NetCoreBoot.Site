@@ -1,7 +1,7 @@
 {
   "dependencies": {
-    "ChloeCore": "2.2.1",
-    "ChloeCore.MySql": "2.2.1",
+    "ChloeCore": "2.3.0",
+    "ChloeCore.MySql": "2.3.0",
     "MySql.Data": "7.0.6-IR31",
     "NETStandard.Library": "1.6.1"
   },

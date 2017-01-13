@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Chloe.Entity;
 
 namespace NetCoreBoot.Entity
 {
     public class Sys_Log
     {
+        [Column(IsPrimaryKey = true)]
         public string F_Id { get; set; }
         public DateTime? F_Date { get; set; }
         public string F_Account { get; set; }

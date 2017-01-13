@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Chloe.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,6 +8,7 @@ namespace NetCoreBoot.Entity
 {
     public class Sys_UserLogOn
     {
+        [Column(IsPrimaryKey = true)]
         public string F_Id { get; set; }
         public string F_UserId { get; set; }
         public string F_UserPassword { get; set; }
