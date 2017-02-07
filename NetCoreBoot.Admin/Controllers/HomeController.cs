@@ -9,10 +9,11 @@ using NetCoreBoot.Service;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Http;
 using NetCoreBoot.Common;
+using NetCoreBoot.CommonApplication;
 
 namespace NetCoreBoot.Admin.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : WebController 
     {
         private IAccountService accountService { get; set; }
 

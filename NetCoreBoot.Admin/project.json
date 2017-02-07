@@ -20,7 +20,7 @@
     "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
     "Microsoft.NETCore.App": {
       "version": "1.0.1",
-      "type": "platform"
+      //"type": "platform"
     },
     "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0",
     "NetCoreBoot.IService": {
@@ -67,6 +67,11 @@
     }
   },
 
+  "runtimes": {
+    "win7-x64": {},
+    "centos.7-x64": {}
+  },
+
   "publishOptions": {
     "include": [
       "wwwroot",
@@ -76,10 +81,10 @@
       "connectionStrings.json",
       "web.config"
     ]
-  },
-
-  "scripts": {
-    "prepublish": [ "bower install", "dotnet bundle" ],
-    "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
   }
+
+  //"scripts": {
+  //  "prepublish": [ "bower install", "dotnet bundle" ],
+  //  "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
+  //}
 }

@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CoreBoot</title>
+    <title>NetCore跨平台开发系统</title>
     <link href="~/css/framework-font.css" rel="stylesheet"/>
     <link href="~/css/framework-login.css" rel="stylesheet" />
     <script src="~/js/jquery/jquery-2.1.1.min.js"></script>
@@ -18,15 +18,26 @@
     <![endif]-->
 </head>
 <body>
-    <div style="position: absolute; z-index: 999; top: 20px; left: 20px; color: #fff; font-size: 13px; line-height: 22px;">
-            <br>
-           
+    <div style="position: absolute; z-index: 999; top: 20px; left: 20px; font-family:'微软雅黑'; color: #fff; font-size: 13px; line-height: 22px;">
+        用户名 admin，密码 000000<br>
+        开发环境：ASP.NET Core + CholeCore.MySQL + Bootstrap<br>
+        运行环境：CentOS.7 X64 + Jexus<br>
+        服务器时间：@DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+        @{ 
+            int result = Environment.TickCount & Int32.MaxValue;
+            TimeSpan m_WorkTimeTemp = new TimeSpan(Convert.ToInt64(Convert.ToInt64(result) * 10000));
+            string m_WorkTime = $"{m_WorkTimeTemp.Days}.{m_WorkTimeTemp.Hours}:{m_WorkTimeTemp.Minutes}:{m_WorkTimeTemp.Seconds}.{m_WorkTimeTemp.Milliseconds}";
+        }
+        已运行时间：@m_WorkTime<br>
+        .NET Core 开发<br>
+        VS Code 或者 VS2015 Update 3+VS2015Tools.Preview2<br>
+        更多详细：<a target="_blank" href="https://www.microsoft.com/net">dot.net</a><br>
         </div>
     <div class="wrapper">
         <div class="container">
             <div class="logo">
                 <i class="fa fa-modx"></i>
-                <h1><span>Core</span>测试系统</h1>
+                <h1><span>NetCore</span>跨平台开发系统</h1>
             </div>
             <form class="form">
                 <div class="row">
@@ -65,11 +76,9 @@
             <li></li>
         </ul>
     </div>
-    @*<div class="copyright">
-            <a href="http://www.nfine.cn" style="text-decoration:none;color:#fff;">NFine开发团队出品</a>
-            <br>
+    <div class="copyright">
            适用浏览器：IE8以上、360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗.
-        </div>*@
+        </div>
     <script type="text/javascript">
         (function ($) {
             $.login = {
