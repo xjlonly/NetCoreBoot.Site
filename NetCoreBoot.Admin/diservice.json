@@ -9,6 +9,11 @@
       "serviceType": "NetCoreBoot.IService.IUserService",
       "implementationType": "NetCoreBoot.Service.UserService",
       "lifetime": "Transient"
+    },
+    {
+      "serviceType": "NetCoreBoot.IService.IRoleAuthorizeService",
+      "implementationType": "NetCoreBoot.Service.RoleAuthorizeService",
+      "lifetime": "Transient"
     }
   ]
 }

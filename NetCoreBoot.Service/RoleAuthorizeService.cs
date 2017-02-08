@@ -7,6 +7,7 @@ using NetCoreBoot.IService;
 using NetCoreBoot.Entity;
 using NetCoreBoot.CommonApplication;
 using NetCoreBoot.Common;
+using Chloe;
 
 namespace NetCoreBoot.Service
 {
@@ -52,19 +53,17 @@ namespace NetCoreBoot.Service
         /// <param name="Category">分类:1-角色2-岗位</param>
         /// <param name="keyword"></param>
         /// <returns></returns>
-        public List<Sys_Role> GetRoleList(int Category = 0, string keyword = "")
+        public List<Sys_Role> GetRoleList(int Category = 1, string keyword = "")
         {
             var expression = LinqExtension.True<Sys_Role>();
+            Func<Sys_Role, bool> func = x => true;
+            IQuery<Sys_Role> iq =  Query<Sys_Role>();
             if(keyword.NotNullOrEmpty())
             {
-                expression = expression.And(x=>x.F_FullName.Contains(keyword.Trim()));
-                expression = expression.Or(x=>x.F_EnCode.Contains(keyword.Trim()));
+               return Query<Sys_Role>().Where(x=>x.F_FullName.Contains(keyword) || x.F_EnCode.Contains(keyword)).Where(x=>x.F_Category == Category).OrderBy(x => x.F_SortCode).ToList();
             }
-            if(Category > 0)
-            {
-                expression = expression.And(x => x.F_Category == Category);
-            }
-            return Query<Sys_Role>().Where(expression).OrderBy(x => x.F_SortCode).ToList();
+            
+            return Query<Sys_Role>().Where(x => x.F_Category == Category).OrderBy(x => x.F_SortCode).ToList();
         }
 
         /// <summary>
@@ -76,16 +75,20 @@ namespace NetCoreBoot.Service
         public  List<Sys_ItemsDetail> GetItemDetailList(string itemId = "", string keyword = "")
         {
             var expression = LinqExtension.True<Sys_ItemsDetail>();
+            IQuery<Sys_ItemsDetail> iq = Query<Sys_ItemsDetail>();
             if(itemId.NotNullOrEmpty())
             {
-                expression = expression.And(x => x.F_ItemId == itemId); 
+                //expression = expression.And(x => x.F_ItemId == itemId);
+                iq = iq.Where(x => x.F_ItemId == itemId);
             }
             if(keyword.NotNullOrEmpty())
             {
-                expression = expression.And(x => x.F_ItemName.Contains(keyword.Trim()));
-                expression = expression.Or(x => x.F_ItemCode.Contains(keyword.Trim()));
+                //expression = expression.And(x => x.F_ItemName.Contains(keyword.Trim()));
+                //expression = expression.Or(x => x.F_ItemCode.Contains(keyword.Trim()));
+
+                iq = iq.Where(x => x.F_ItemName.Contains(keyword.Trim()) || x.F_ItemCode.Contains(keyword.Trim()));
             }
-            return Query<Sys_ItemsDetail>().Where(expression).OrderBy(x => x.F_SortCode).ToList();
+            return iq.OrderBy(x => x.F_SortCode).ToList();
         }
 
         //获取菜单按钮列表

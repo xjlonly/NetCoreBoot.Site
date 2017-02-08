@@ -9,7 +9,6 @@ using NetCoreBoot.Entity;
 using NetCoreBoot.Common;
 using NetCoreBoot.IService;
 
-
 namespace NetCoreBoot.Admin.Controllers
 {
     public class ClientsDataController : WebController
@@ -33,7 +32,7 @@ namespace NetCoreBoot.Admin.Controllers
                 authorizeMenu = this.GetMenuList(),
                 authorizeButton = this.GetMenuButtonList(),
             };
-            return View();
+            return Content(data.Serialize());
         }
 
         //获取菜单列表

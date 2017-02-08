@@ -32,7 +32,7 @@ namespace NetCoreBoot.Common
                 .Select((f, i) => new { f, x = second.Parameters[i] })
                 .ToDictionary(p => p.x, p => p.f);
             var secondBody = ParameterRebinder.ReplaceParameters(map, second.Body);
-            return Expression.Lambda<T>(merge(first, second), first.Parameters);
+            return Expression.Lambda<T>(merge(first.Body, second.Body), first.Parameters);
         }
 
         public static Expression Property(this Expression expression, string propertyName)
