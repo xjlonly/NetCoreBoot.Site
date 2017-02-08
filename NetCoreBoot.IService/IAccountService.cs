@@ -9,7 +9,7 @@ namespace NetCoreBoot.IService
     /// <summary>
     /// 账号相关操作服务
     /// </summary>
-    public interface IAccountService : ISysLogService
+    public interface IAccountService :IBaseService, ISysLogService
     {
         /// <summary>
         /// 

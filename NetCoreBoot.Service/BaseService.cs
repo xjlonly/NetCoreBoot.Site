@@ -9,10 +9,11 @@ using System.Data;
 using NetCoreBoot.IService;
 using NetCoreBoot.Entity;
 using NetCoreBoot.Common;
+using System.Linq.Expressions;
 
 namespace NetCoreBoot.Service
 {
-    public abstract class BaseService :  ISysLogService
+    public abstract class BaseService : IBaseService, ISysLogService
     {
         IDbContext _dbContext = null;
 
@@ -47,6 +48,17 @@ namespace NetCoreBoot.Service
         public IQuery<T> Query<T>() where T : new ()
         {
             return DbContext.Query<T>();
+        }
+
+        public List<T> GetList<T>(Expression<Func<T, bool>> condition = null) where T : new()
+        {
+            
+            return (condition != null ? Query<T>().Where(condition) : Query<T>()).ToList();
+        }
+
+        public List<T> GetList<T>(int page, int pagesize, Expression<Func<T, bool>> condition = null) where T : new()
+        {
+            return (condition != null ? Query<T>().Where(condition) : Query<T>()).Skip(page).Take(pagesize).ToList();
         }
 
         //异步任务，主要进行日志操作
@@ -121,6 +133,8 @@ namespace NetCoreBoot.Service
 
             return entity;
         }
+
+     
         #endregion
 
     }

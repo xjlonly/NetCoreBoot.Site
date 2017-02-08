@@ -83,14 +83,19 @@ namespace NetCoreBoot.Admin
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller}/{action}.html/{id?}"
+                    template: "{controller}/{action}.html"
+                    );
+
+                routes.MapRoute(
+                    name: "replenish",
+                    template: "{controller}/{action}.do"
                     );
 
                 routes.MapRoute(
                     name: "replenish",
                     template: "{controller=Login}/{action=Index}/{id?}"
                     );
-                    
+
             });
         }
     }

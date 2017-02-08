@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NetCoreBoot.Common
 {
-    public static class DictionaryExtend
+    public static class DictionaryExtension
     {
 
         /// <summary>

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace NetCoreBoot.Common
 {
-    public static class ConvertExension
+    public static class ConvertExtension
     {
         public static int ToInt(this object data)
         {

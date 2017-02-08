@@ -16,6 +16,7 @@
     "NetCoreBoot.Entity": "1.0.0-*",
     "NetCoreBoot.Data": "1.0.0-*",
     "NetCoreBoot.Common": "1.0.0-*",
+    "NetCoreBoot.CommonApplication": "1.0.0-*",
   },
 
   "frameworks": {

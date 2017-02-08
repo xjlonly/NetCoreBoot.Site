@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace NetCoreBoot.IService
 {
-    public interface IUserService : ISysLogService
+    public interface IUserService : IBaseService, ISysLogService
     {
         //IAccountService Account { get; } 
     }

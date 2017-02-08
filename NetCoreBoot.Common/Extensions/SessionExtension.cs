@@ -10,7 +10,7 @@ using System.Text;
 
 namespace NetCoreBoot.Common
 {
-    public static class SessionExtensions
+    public static class SessionExtension
     {
         //读取Session存储的对象数据
         public static T Get<T>(this ISession session, string key) where T : class
