@@ -87,7 +87,7 @@ namespace NetCoreBoot.Admin
                     );
 
                 routes.MapRoute(
-                    name: "replenish",
+                    name: "api",
                     template: "{controller}/{action}.do"
                     );
 

@@ -88,13 +88,28 @@ namespace NetCoreBoot.Service
             return Query<Sys_ItemsDetail>().Where(expression).OrderBy(x => x.F_SortCode).ToList();
         }
 
+        //获取菜单按钮列表
         public List<Sys_ModuleButton> GetButtonList(string roleId)
         {
             var data = new List<Sys_ModuleButton>();
-            if (OperatorProvider.Provider.GetCurrent().IsSystem)
+            var modulebuttons = GetList<Sys_ModuleButton>().OrderBy(x => x.F_SortCode).ToList();
+            if (AdminUtils.GetCurrentCookie().IsAdmin)
             {
-                data = moduleButtonApp.GetList();
+                data = modulebuttons;
             }
+            else
+            {
+                var authorizedata = Query<Sys_RoleAuthorize>().Where(x => x.F_ObjectId == roleId && x.F_ItemType == 2).ToList();
+                foreach (var item in authorizedata)
+                {
+                    Sys_ModuleButton moduleButtonEntity = modulebuttons.Find(t => t.F_Id == item.F_ItemId);
+                    if (moduleButtonEntity != null)
+                    {
+                        data.Add(moduleButtonEntity);
+                    }
+                }
+            }
+            return data.OrderBy(t => t.F_SortCode).ToList();
         }
     }
 }

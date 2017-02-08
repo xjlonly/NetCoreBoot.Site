@@ -1,4 +1,4 @@
-﻿using System
+﻿using System;
 using Chloe.Entity;
 
 namespace NetCoreBoot.Entity

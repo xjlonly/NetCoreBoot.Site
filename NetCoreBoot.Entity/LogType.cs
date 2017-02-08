@@ -29,7 +29,7 @@ namespace NetCoreBoot.Entity
         [Description("修改")]
         Update = 6,
 
-        [Description("提交")]Class.cs
+        [Description("提交")]
         Submit = 7,
 
         [Description("异常")]

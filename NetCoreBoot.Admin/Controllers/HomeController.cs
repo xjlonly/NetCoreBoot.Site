@@ -63,5 +63,12 @@ namespace NetCoreBoot.Admin.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public ActionResult Default()
+        {
+            return View();
+        }
+        
     }
 }

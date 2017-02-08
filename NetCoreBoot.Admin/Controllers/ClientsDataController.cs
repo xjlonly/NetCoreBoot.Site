@@ -116,13 +116,30 @@ namespace NetCoreBoot.Admin.Controllers
         private object GetMenuButtonList()
         {
             var roleId  = AdminUtils.GetCurrentCookie().RoleId;
-            var data = new RoleAuthorizeApp().GetButtonList(roleId);
-            var dataModuleId = data.Distinct(new ExtList<ModuleButtonEntity>("F_ModuleId"));
+            var data =  authorizeService.GetButtonList(roleId);
+            var dataModuleId = data.Distinct(new ListExt<Sys_ModuleButton>("F_ModuleId"));
             Dictionary<string, object> dictionary = new Dictionary<string, object>();
-            foreach (ModuleButtonEntity item in dataModuleId)
+            foreach (Sys_ModuleButton item in dataModuleId)
             {
                 var buttonList = data.Where(t => t.F_ModuleId.Equals(item.F_ModuleId));
                 dictionary.Add(item.F_ModuleId, buttonList);
+            }
+            return dictionary;
+        }
+
+        //获取组织列表
+        private object GetOrganizeList()
+        {
+            var data = authorizeService.GetList<Sys_Organize>().OrderBy(x => x.F_CreatorTime).ToList();
+            Dictionary<string, object> dictionary = new Dictionary<string, object>();
+            foreach (Sys_Organize item in data)
+            {
+                var fieldItem = new
+                {
+                    encode = item.F_EnCode,
+                    fullname = item.F_FullName
+                };
+                dictionary.Add(item.F_Id, fieldItem);
             }
             return dictionary;
         }
