@@ -50,7 +50,7 @@ namespace NetCoreBoot.Admin.Controllers
             entitys?.ForEach(model =>
             {
                 string toJson = model.Serialize();
-                toJson = toJson.Insert(toJson.Length - 1, $",\"ChildNodes:\":{ToMenuJson(data, model.F_Id).ToString()}");
+                toJson = toJson.Insert(toJson.Length - 1, $",\"ChildNodes\":{ToMenuJson(data, model.F_Id).ToString()}");
                 json.Append(toJson + ",");
             });
             return json.ToString().TrimEnd(',') + "]";

@@ -1,8 +1,7 @@
 ﻿var clients = [];
-$(function () {
-    clients = $.clientsInit();
-})
-$.clientsInit = function () {
+
+
+var clientsInit = function () {
     var dataJson = {
         dataItems: [],
         organize: [],
@@ -31,3 +30,8 @@ $.clientsInit = function () {
     init();
     return dataJson;
 }
+
+
+$(function () {
+    clients = clientsInit();
+})
