@@ -11,7 +11,7 @@ using Chloe;
 
 namespace NetCoreBoot.Service
 {
-    public class RoleAuthorizeService : BaseService, IRoleAuthorizeService
+    public class RoleAuthorizeService : BaseService, IRoleAuthorizeService 
     {
         /// <summary>
         /// 获取角色权限列表

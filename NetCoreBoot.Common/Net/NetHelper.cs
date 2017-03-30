@@ -15,6 +15,7 @@ namespace NetCoreBoot.Common
     /// </summary>
     public class NetHelper
     {
+
         
         #region Ip(获取Ip)
         /// <summary>
@@ -54,24 +55,26 @@ namespace NetCoreBoot.Common
         /// 返回描述本地计算机上的网络接口的对象(网络接口也称为网络适配器)。
         /// </summary>
         /// <returns></returns>
-        public static NetworkInterface[] NetCardInfo()
-        {
-            return NetworkInterface.GetAllNetworkInterfaces();
-        }
+        //public static NetworkInterface[] NetCardInfo()
+        //{
+        //    System.Net.NetworkInformation.IPAddressCollection ip = new IPAddressCollection();
+            
+        //    return NetworkInterface.GetAllNetworkInterfaces();
+        //}
         ///<summary>
         /// 通过NetworkInterface读取网卡Mac
         ///</summary>
         ///<returns></returns>
-        public static List<string> GetMacByNetworkInterface()
-        {
-            List<string> macs = new List<string>();
-            NetworkInterface[] interfaces = NetworkInterface.GetAllNetworkInterfaces();
-            foreach (NetworkInterface ni in interfaces)
-            {
-                macs.Add(ni.GetPhysicalAddress().ToString());
-            }
-            return macs;
-        }
+        //public static List<string> GetMacByNetworkInterface()
+        //{
+        //    List<string> macs = new List<string>();
+        //    NetworkInterface[] interfaces = NetworkInterface.GetAllNetworkInterfaces();
+        //    foreach (NetworkInterface ni in interfaces)
+        //    {
+        //        macs.Add(ni.GetPhysicalAddress().ToString());
+        //    }
+        //    return macs;
+        //}
         #endregion
 
         #region Ip城市(获取Ip城市)

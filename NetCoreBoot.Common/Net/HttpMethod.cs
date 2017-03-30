@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Net.NetworkInformation;
@@ -11,6 +10,7 @@ using System.Net.Security;
 using System.Collections;
 using System.Text;
 using System.Net.Http.Headers;
+using Microsoft.AspNetCore.Http;
 
 namespace NetCoreBoot.Common
 { 
@@ -136,75 +136,77 @@ namespace NetCoreBoot.Common
             {
                 throw;
             }
+
+            
         }
         #endregion
 
         #region Post With Pic
-        private string HttpPost(string url, IDictionary<object, object> param, string filePath)
-        {
-            string boundary = "---------------------------" + DateTime.Now.Ticks.ToString("x");
-            byte[] boundarybytes = System.Text.Encoding.ASCII.GetBytes("\r\n--" + boundary + "\r\n");
+        //private string HttpPost(string url, IDictionary<object, object> param, string filePath)
+        //{
+        //    string boundary = "---------------------------" + DateTime.Now.Ticks.ToString("x");
+        //    byte[] boundarybytes = System.Text.Encoding.ASCII.GetBytes("\r\n--" + boundary + "\r\n");
+            
+        //    HttpWebRequest wr = (HttpWebRequest)WebRequest.Create(url);
+        //    wr.ContentType = "multipart/form-data; boundary=" + boundary;
+        //    wr.Method = "POST";
+        //    wr.Credentials = System.Net.CredentialCache.DefaultCredentials;
 
-            HttpWebRequest wr = (HttpWebRequest)WebRequest.Create(url);
-            wr.ContentType = "multipart/form-data; boundary=" + boundary;
-            wr.Method = "POST";
-            wr.Credentials = System.Net.CredentialCache.DefaultCredentials;
+        //    var taskrs = wr.GetRequestStreamAsync();
+        //    taskrs.Wait();
+        //    Stream rs = taskrs.Result;
+        //    string responseStr = null;
 
-            var taskrs = wr.GetRequestStreamAsync();
-            taskrs.Wait();
-            Stream rs = taskrs.Result;
-            string responseStr = null;
+        //    string formdataTemplate = "Content-Disposition: form-data; name=\"{0}\"\r\n\r\n{1}";
+        //    foreach (string key in param.Keys)
+        //    {
+        //        rs.Write(boundarybytes, 0, boundarybytes.Length);
+        //        string formitem = string.Format(formdataTemplate, key, param[key]);
+        //        byte[] formitembytes = System.Text.Encoding.UTF8.GetBytes(formitem);
+        //        rs.Write(formitembytes, 0, formitembytes.Length);
+        //    }
+        //    rs.Write(boundarybytes, 0, boundarybytes.Length);
 
-            string formdataTemplate = "Content-Disposition: form-data; name=\"{0}\"\r\n\r\n{1}";
-            foreach (string key in param.Keys)
-            {
-                rs.Write(boundarybytes, 0, boundarybytes.Length);
-                string formitem = string.Format(formdataTemplate, key, param[key]);
-                byte[] formitembytes = System.Text.Encoding.UTF8.GetBytes(formitem);
-                rs.Write(formitembytes, 0, formitembytes.Length);
-            }
-            rs.Write(boundarybytes, 0, boundarybytes.Length);
+        //    string headerTemplate = "Content-Disposition: form-data; name=\"{0}\"; filename=\"{1}\"\r\nContent-Type: {2}\r\n\r\n";
+        //    string header = string.Format(headerTemplate, "pic", filePath, "text/plain");
+        //    byte[] headerbytes = System.Text.Encoding.UTF8.GetBytes(header);
+        //    rs.Write(headerbytes, 0, headerbytes.Length);
 
-            string headerTemplate = "Content-Disposition: form-data; name=\"{0}\"; filename=\"{1}\"\r\nContent-Type: {2}\r\n\r\n";
-            string header = string.Format(headerTemplate, "pic", filePath, "text/plain");
-            byte[] headerbytes = System.Text.Encoding.UTF8.GetBytes(header);
-            rs.Write(headerbytes, 0, headerbytes.Length);
+        //    FileStream fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+        //    byte[] buffer = new byte[4096];
+        //    int bytesRead = 0;
+        //    while ((bytesRead = fileStream.Read(buffer, 0, buffer.Length)) != 0)
+        //    {
+        //        rs.Write(buffer, 0, bytesRead);
+        //    }
+        //    fileStream.Dispose();
 
-            FileStream fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
-            byte[] buffer = new byte[4096];
-            int bytesRead = 0;
-            while ((bytesRead = fileStream.Read(buffer, 0, buffer.Length)) != 0)
-            {
-                rs.Write(buffer, 0, bytesRead);
-            }
-            fileStream.Dispose();
+        //    byte[] trailer = System.Text.Encoding.ASCII.GetBytes("\r\n--" + boundary + "--\r\n");
+        //    rs.Write(trailer, 0, trailer.Length);
+        //    rs.Dispose();
 
-            byte[] trailer = System.Text.Encoding.ASCII.GetBytes("\r\n--" + boundary + "--\r\n");
-            rs.Write(trailer, 0, trailer.Length);
-            rs.Dispose();
-
-            WebResponse wresp = null;
-            try
-            {
-                var rsa = wr.GetResponseAsync();
-                wresp = rsa.Result;
-                Stream stream2 = wresp.GetResponseStream();
-                StreamReader reader2 = new StreamReader(stream2);
-                responseStr = reader2.ReadToEnd();
-                //logger.Debug(string.Format("File uploaded, server response is: {0}", responseStr));
-            }
-            catch (Exception ex)
-            {
-                //logger.Error("Error uploading file", ex);
-                if (wresp != null)
-                {
-                    wresp.Dispose();
-                    wresp = null;
-                }
-                throw;
-            }
-            return responseStr;
-        }
+        //    WebResponse wresp = null;
+        //    try
+        //    {
+        //        var rsa = wr.GetResponseAsync();
+        //        wresp = rsa.Result;
+        //        Stream stream2 = wresp.GetResponseStream();
+        //        StreamReader reader2 = new StreamReader(stream2);
+        //        responseStr = reader2.ReadToEnd();
+        //        //logger.Debug(string.Format("File uploaded, server response is: {0}", responseStr));
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        //logger.Error("Error uploading file", ex);
+        //        if (wresp != null)
+        //        {
+        //            wresp.Dispose();
+        //            wresp = null;
+        //        }
+        //        throw;
+        //    }
+        //    return responseStr;
+        //}
 
         /// <summary>
         /// HTTP POST方式请求数据(带图片)
@@ -213,65 +215,65 @@ namespace NetCoreBoot.Common
         /// <param name="param">POST的数据</param>
         /// <param name="fileByte">图片</param>
         /// <returns></returns>
-        public static string HttpPost(string url, IDictionary<object, object> param, byte[] fileByte)
-        {
-            string boundary = "---------------------------" + DateTime.Now.Ticks.ToString("x");
-            byte[] boundarybytes = System.Text.Encoding.ASCII.GetBytes("\r\n--" + boundary + "\r\n");
+        //public static string HttpPost(string url, IDictionary<object, object> param, byte[] fileByte)
+        //{
+        //    string boundary = "---------------------------" + DateTime.Now.Ticks.ToString("x");
+        //    byte[] boundarybytes = System.Text.Encoding.ASCII.GetBytes("\r\n--" + boundary + "\r\n");
 
-            HttpWebRequest wr = (HttpWebRequest)WebRequest.Create(url);
-            wr.ContentType = "multipart/form-data; boundary=" + boundary;
-            wr.Method = "POST";
-            wr.Credentials = System.Net.CredentialCache.DefaultCredentials;
+        //    HttpWebRequest wr = (HttpWebRequest)WebRequest.Create(url);
+        //    wr.ContentType = "multipart/form-data; boundary=" + boundary;
+        //    wr.Method = "POST";
+        //    wr.Credentials = System.Net.CredentialCache.DefaultCredentials;
 
-            var taskrs = wr.GetRequestStreamAsync();
-            taskrs.Wait();
-            var rs = taskrs.Result;
-            string responseStr = null;
+        //    var taskrs = wr.GetRequestStreamAsync();
+        //    taskrs.Wait();
+        //    var rs = taskrs.Result;
+        //    string responseStr = null;
 
-            string formdataTemplate = "Content-Disposition: form-data; name=\"{0}\"\r\n\r\n{1}";
-            foreach (string key in param.Keys)
-            {
-                rs.Write(boundarybytes, 0, boundarybytes.Length);
-                string formitem = string.Format(formdataTemplate, key, param[key]);
-                byte[] formitembytes = System.Text.Encoding.UTF8.GetBytes(formitem);
-                rs.Write(formitembytes, 0, formitembytes.Length);
-            }
-            rs.Write(boundarybytes, 0, boundarybytes.Length);
+        //    string formdataTemplate = "Content-Disposition: form-data; name=\"{0}\"\r\n\r\n{1}";
+        //    foreach (string key in param.Keys)
+        //    {
+        //        rs.Write(boundarybytes, 0, boundarybytes.Length);
+        //        string formitem = string.Format(formdataTemplate, key, param[key]);
+        //        byte[] formitembytes = System.Text.Encoding.UTF8.GetBytes(formitem);
+        //        rs.Write(formitembytes, 0, formitembytes.Length);
+        //    }
+        //    rs.Write(boundarybytes, 0, boundarybytes.Length);
 
-            string headerTemplate = "Content-Disposition: form-data; name=\"{0}\"; filename=\"{1}\"\r\nContent-Type: {2}\r\n\r\n";
-            string header = string.Format(headerTemplate, "pic", fileByte, "text/plain");//image/jpeg
-            byte[] headerbytes = System.Text.Encoding.UTF8.GetBytes(header);
-            rs.Write(headerbytes, 0, headerbytes.Length);
+        //    string headerTemplate = "Content-Disposition: form-data; name=\"{0}\"; filename=\"{1}\"\r\nContent-Type: {2}\r\n\r\n";
+        //    string header = string.Format(headerTemplate, "pic", fileByte, "text/plain");//image/jpeg
+        //    byte[] headerbytes = System.Text.Encoding.UTF8.GetBytes(header);
+        //    rs.Write(headerbytes, 0, headerbytes.Length);
 
-            rs.Write(fileByte, 0, fileByte.Length);
+        //    rs.Write(fileByte, 0, fileByte.Length);
 
-            byte[] trailer = System.Text.Encoding.ASCII.GetBytes("\r\n--" + boundary + "--\r\n");
-            rs.Write(trailer, 0, trailer.Length);
-            rs.Dispose();
+        //    byte[] trailer = System.Text.Encoding.ASCII.GetBytes("\r\n--" + boundary + "--\r\n");
+        //    rs.Write(trailer, 0, trailer.Length);
+        //    rs.Dispose();
 
-            WebResponse wresp = null;
-            try
-            {
-                var  taskwresp = wr.GetResponseAsync();
-                taskwresp.Wait();
-                wresp = taskwresp.Result;
-                Stream stream2 = wresp.GetResponseStream();
-                StreamReader reader2 = new StreamReader(stream2);
-                responseStr = reader2.ReadToEnd();
-                // logger.Error(string.Format("File uploaded, server response is: {0}", responseStr));
-            }
-            catch (Exception ex)
-            {
-                //logger.Error("Error uploading file", ex);
-                if (wresp != null)
-                {
-                    wresp.Dispose();
-                    wresp = null;
-                }
-                throw;
-            }
-            return responseStr;
-        }
+        //    WebResponse wresp = null;
+        //    try
+        //    {
+        //        var  taskwresp = wr.GetResponseAsync();
+        //        taskwresp.Wait();
+        //        wresp = taskwresp.Result;
+        //        Stream stream2 = wresp.GetResponseStream();
+        //        StreamReader reader2 = new StreamReader(stream2);
+        //        responseStr = reader2.ReadToEnd();
+        //        // logger.Error(string.Format("File uploaded, server response is: {0}", responseStr));
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        //logger.Error("Error uploading file", ex);
+        //        if (wresp != null)
+        //        {
+        //            wresp.Dispose();
+        //            wresp = null;
+        //        }
+        //        throw;
+        //    }
+        //    return responseStr;
+        //}
         #endregion
 
     }

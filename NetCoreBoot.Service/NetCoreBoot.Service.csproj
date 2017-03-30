@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.6</TargetFramework>
+    <DebugType>portable</DebugType>
+    <AssemblyName>NetCoreBoot.Service</AssemblyName>
+    <PackageId>NetCoreBoot.Service</PackageId>
+    <NetStandardImplicitPackageVersion>1.6.1</NetStandardImplicitPackageVersion>
+    <PackageTargetFallback>$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NetCoreBoot.IService\NetCoreBoot.IService.csproj" />
+    <ProjectReference Include="..\NetCoreBoot.Entity\NetCoreBoot.Entity.csproj" />
+    <ProjectReference Include="..\NetCoreBoot.Data\NetCoreBoot.Data.csproj" />
+    <ProjectReference Include="..\NetCoreBoot.Common\NetCoreBoot.Common.csproj" />
+    <ProjectReference Include="..\NetCoreBoot.CommonApplication\NetCoreBoot.CommonApplication.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ChloeCore" Version="2.3.0" />
+    <PackageReference Include="ChloeCore.MySql" Version="2.3.0" />
+  </ItemGroup>
+
+</Project>

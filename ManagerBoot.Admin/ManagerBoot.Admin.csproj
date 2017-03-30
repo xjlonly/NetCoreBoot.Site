@@ -1,0 +1,80 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wp8+wpa81;</PackageTargetFallback>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\images\ajax-loader.gif" />
+    <Content Include="wwwroot\images\alipay.jpg" />
+    <Content Include="wwwroot\images\alipayimg.png" />
+    <Content Include="wwwroot\images\button_pm_close.png" />
+    <Content Include="wwwroot\images\cy-reward-title-bg.jpg" />
+    <Content Include="wwwroot\images\loading.gif" />
+    <Content Include="wwwroot\images\radio1.jpg" />
+    <Content Include="wwwroot\images\radio2.jpg" />
+    <Content Include="wwwroot\images\samples\angelina-300.jpg" />
+    <Content Include="wwwroot\images\samples\emma-300.jpg" />
+    <Content Include="wwwroot\images\samples\emma.png" />
+    <Content Include="wwwroot\images\samples\george.png" />
+    <Content Include="wwwroot\images\samples\head_120.png" />
+    <Content Include="wwwroot\images\samples\jessica.jpg" />
+    <Content Include="wwwroot\images\samples\kunis-300.jpg" />
+    <Content Include="wwwroot\images\samples\kunis.png" />
+    <Content Include="wwwroot\images\samples\lima-300.jpg" />
+    <Content Include="wwwroot\images\samples\messages-photo-1.png" />
+    <Content Include="wwwroot\images\samples\messages-photo-2.png" />
+    <Content Include="wwwroot\images\samples\messages-photo-3.png" />
+    <Content Include="wwwroot\images\samples\miranda-560-300.png" />
+    <Content Include="wwwroot\images\samples\robert-300.jpg" />
+    <Content Include="wwwroot\images\samples\robert.png" />
+    <Content Include="wwwroot\images\samples\ryan-300.jpg" />
+    <Content Include="wwwroot\images\samples\ryan.png" />
+    <Content Include="wwwroot\images\samples\scarlet-159.png" />
+    <Content Include="wwwroot\images\samples\scarlet.png" />
+    <Content Include="wwwroot\images\samples\scarlett-300.jpg" />
+    <Content Include="wwwroot\images\signet.gif" />
+    <Content Include="wwwroot\images\wechat.jpg" />
+    <Content Include="wwwroot\images\weipayimg.png" />
+    <Content Include="wwwroot\images\weixin_nfine.png" />
+    <Content Include="wwwroot\js\datepicker\DatePicker.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="1.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="1.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="1.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="1.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="1.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="1.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="1.0.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="1.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="1.1.0" />
+    <PackageReference Include="ZKWeb.System.Drawing" Version="2.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NetCoreBoot.CommonApplication\NetCoreBoot.CommonApplication.csproj" />
+    <ProjectReference Include="..\NetCoreBoot.Common\NetCoreBoot.Common.csproj" />
+    <ProjectReference Include="..\NetCoreBoot.Data\NetCoreBoot.Data.csproj" />
+    <ProjectReference Include="..\NetCoreBoot.Entity\NetCoreBoot.Entity.csproj" />
+    <ProjectReference Include="..\NetCoreBoot.IService\NetCoreBoot.IService.csproj" />
+    <ProjectReference Include="..\NetCoreBoot.Service\NetCoreBoot.Service.csproj" />
+  </ItemGroup>
+
+</Project>

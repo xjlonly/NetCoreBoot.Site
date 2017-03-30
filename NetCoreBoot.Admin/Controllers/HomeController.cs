@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Http;
 using NetCoreBoot.Common;
 using NetCoreBoot.CommonApplication;
+using System.ComponentModel.Design;
 
 namespace NetCoreBoot.Admin.Controllers
 {
