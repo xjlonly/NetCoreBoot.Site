@@ -83,7 +83,7 @@ namespace NetCoreBoot.Service
 
 
         #region IDisposable Support
-        private bool disposedValue = false; // 要检测冗余调用
+        //private bool disposedValue = false; // 要检测冗余调用
         private object p;
 
         

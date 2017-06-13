@@ -6,11 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using NetCoreBoot.IService;
 using NetCoreBoot.Service;
-using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Http;
 using NetCoreBoot.Common;
 using NetCoreBoot.CommonApplication;
-using System.ComponentModel.Design;
 
 
 namespace ManagerBoot.Admin.Controllers

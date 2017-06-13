@@ -3,15 +3,73 @@
 }
 <h2>@ViewData["Title"].</h2>
 <h3>@ViewData["Message"]</h3>
+<script src="~/js/jquery/jquery-2.1.1.min.js"></script>
+<script>
+        var sss = "";
+        var ref = "";
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+        var count = 0;
+        function draw() {
+            var d = { apicode: '' };
 
-<address>
-    <strong>Support:</strong> <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+            $.getJSON("http://cms.can-ad.cn/api.php?op=code&callback=?", d, function (ret) {
+                //alert(ret['code']);
+                d.apicode = ret['code'];
+                $.getJSON("http://cms.can-ad.cn/api.php?op=elm&act=postdata&callback=?", d, function (ret) {
+
+                    if (ret.code === -1) {
+                        //alert(ret.msg);
+                    }
+                    else {
+                        if (ret.award == 1) {
+                            //ҹĻчºӼ¤»
+                            //$('.prize #prize-code').html(ret.code);
+                            //sss += "特权礼包" + ret.code + "<br>";
+                        }
+                        if (ret.award == 2) {
+
+                            sss += "跟宠九灵" + ret.code + "<br>";
+                        }
+                        if (ret.award == 3) {
+                            sss += "͘夜幕星河" + ret.code + "<br>";
+                        }
+                        if (ret.award == 4) {
+                            //sss += "饿了么红包" + "<br>";
+                        }
+                        count++;
+                        $("#countSUm").html(count);
+                        $("#htmmmmm").html(sss);
+                    }
+
+                });
+            });
+        }
+
+
+
+        function meditime() {
+            var iie = $("#timeInter").val();
+            clearInterval(ref);
+            ref = setInterval(function () {
+                draw();
+            }, iie);
+
+        }
+        $(function () {
+            meditime();
+            $("#stopS").click(function () {
+                clearInterval(ref);
+            });
+        });
+       
+</script>
+
+ 设置抽奖时间间隔<input value="1000" id="timeInter" /> 毫秒 <input type="button" id="" onclick="meditime();" value="提交" /><input type="button" id="stopS" value="暂停" />
+<div id="">
+    已抽奖次数 <span id="countSUm"></span><br />
+    已获奖项：<br />
+</div>
+<div id="htmmmmm">
+
+</div>
+

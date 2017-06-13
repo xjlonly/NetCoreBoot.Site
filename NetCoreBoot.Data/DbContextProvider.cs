@@ -9,10 +9,12 @@ namespace NetCoreBoot.Data
     {
         public static string ConnectionString { get; private set; }
         public static string DbType { get; private set; }
+        public static IConfigurationRoot Configuration { get; set; }
         static DbContextProvider()
         {
             var builder = new ConfigurationBuilder();
-            var Config = builder.AddInMemoryCollection().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile($"appsettings.json", optional: true, reloadOnChange: true)?.Build();
+            var Config = builder.AddInMemoryCollection().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile($"connectionStrings.json", optional: true, reloadOnChange: true)?.Build();
+            
             DbType = Config["DBType"];
             if(string.IsNullOrEmpty(DbType))
             {

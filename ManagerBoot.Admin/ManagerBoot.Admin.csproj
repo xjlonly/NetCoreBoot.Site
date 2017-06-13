@@ -42,6 +42,7 @@
     <Content Include="wwwroot\images\weipayimg.png" />
     <Content Include="wwwroot\images\weixin_nfine.png" />
     <Content Include="wwwroot\js\datepicker\DatePicker.js" />
+    <Content Include="wwwroot\js\zzsc.js" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />

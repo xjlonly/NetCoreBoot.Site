@@ -20,8 +20,8 @@
 <body>
     <div style="position: absolute; z-index: 999; top: 20px; left: 20px; font-family:'微软雅黑'; color: #fff; font-size: 13px; line-height: 22px;">
         用户名 admin，密码 000000<br>
-        开发环境：ASP.NET Core + CholeCore.MySQL + Bootstrap<br>
-        运行环境：CentOS.7 X64 + Jexus<br>
+        开发环境：ASP.NET Core 1.1.0 + CholeCore.MySQL + Bootstrap<br>
+        运行环境：CentOS.7 X64 + Nginx<br>
         服务器时间：@DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
         @{ 
             int result = Environment.TickCount & Int32.MaxValue;
@@ -30,7 +30,7 @@
         }
         已运行时间：@m_WorkTime<br>
         .NET Core 开发<br>
-        VS Code 或者 VS2015 Update 3+VS2015Tools.Preview2<br>
+        VS Code 或者 VS 2017<br>
         更多详细：<a target="_blank" href="https://www.microsoft.com/net">dot.net</a><br>
         </div>
     <div class="wrapper">
@@ -128,7 +128,7 @@
                                 $("#login_button").removeAttr('disabled').find('span').html("登录");
                                 $.login.formMessage("登录超时");
                             }
-                            
+
                         });
                     }
                 },
@@ -171,8 +171,23 @@
             };
             $(function () {
                 $.login.init();
+                flashTime();
             });
         })(jQuery);
+
+        function flashTime() {
+            //后台传入的当前系统时间（毫秒数）
+            var systime = @Environment.TickCount;
+            var date = new Date();
+            date.setTime(systime * 10000 - 1 + 1001);
+            var year = date.getYear();
+            var month = date.getMonth() + 1;
+            var day = date.getDate();
+            var hours = date.getHours();
+            var minute = date.getMinutes();
+            var second = date.getSeconds();
+
+        }
     </script>
 </body>
 </html>

@@ -20,7 +20,8 @@ namespace ManagerBoot.Admin
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables()
-                .AddJsonFile("diservice.json", optional: true, reloadOnChange: true);
+                .AddJsonFile("diservice.json", optional: true, reloadOnChange: true)
+                .AddJsonFile("connectionStrings.json", optional:true, reloadOnChange:true);
             Configuration = builder.Build();
         }
 
@@ -82,6 +83,7 @@ namespace ManagerBoot.Admin
 
             app.UseStaticFiles();
             NetCoreBoot.Common.HttpContext.ServiceProvider = isp;
+            NetCoreBoot.Data.DbContextProvider.Configuration = Configuration;
             app.UseStaticFiles();
             //app.UseSession();
 
