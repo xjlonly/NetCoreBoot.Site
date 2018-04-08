@@ -70,5 +70,6 @@ namespace ManagerBoot.Admin.Controllers
             return View();
         }
 
+
     }
 }

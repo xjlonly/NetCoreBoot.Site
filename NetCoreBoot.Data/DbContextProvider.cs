@@ -14,8 +14,8 @@ namespace NetCoreBoot.Data
         {
             var builder = new ConfigurationBuilder();
             var Config = builder.AddInMemoryCollection().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile($"connectionStrings.json", optional: true, reloadOnChange: true)?.Build();
-            
-            DbType = Config["DBType"];
+            var Appsettings = builder.AddInMemoryCollection().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile($"appsettings.json", optional: true, reloadOnChange: true)?.Build();
+            DbType = Appsettings["DBType"];
             if(string.IsNullOrEmpty(DbType))
             {
                 throw new System.Exception("数据库配置有误，请检查appsettings.json文件");

@@ -20,9 +20,4 @@
     <ProjectReference Include="..\NetCoreBoot.CommonApplication\NetCoreBoot.CommonApplication.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="ChloeCore" Version="2.3.0" />
-    <PackageReference Include="ChloeCore.MySql" Version="2.3.0" />
-  </ItemGroup>
-
 </Project>

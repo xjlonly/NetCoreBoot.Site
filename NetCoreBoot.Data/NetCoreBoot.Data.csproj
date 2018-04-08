@@ -12,8 +12,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ChloeCore" Version="2.3.0" />
-    <PackageReference Include="ChloeCore.MySql" Version="2.3.0" />
+    <PackageReference Include="ChloeCore" Version="2.8.0" />
+    <PackageReference Include="ChloeCore.MySql" Version="2.8.0" />
+    <PackageReference Include="ChloeCore.Oracle" Version="2.8.0" />
+    <PackageReference Include="ChloeCore.SQLite" Version="2.8.0" />
+    <PackageReference Include="ChloeCore.SqlServer" Version="2.8.0" />
     <PackageReference Include="MySql.Data" Version="7.0.6-IR31" />
   </ItemGroup>
 
