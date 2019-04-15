@@ -27,6 +27,7 @@ namespace LogUpLoadService.QQHelper
             _winTitle = tittle;
             //_QQWindowHandle = Win32.FindWindow(null, tittle);
         }
+        
         ~QQChatWindow()
         {
             Dispose(true);

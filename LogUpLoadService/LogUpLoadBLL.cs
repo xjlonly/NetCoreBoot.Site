@@ -19,7 +19,7 @@ namespace LogUpLoadService
         private static string toName = System.Configuration.ConfigurationManager.AppSettings["ToName"];
         private static string filePath = System.Configuration.ConfigurationManager.AppSettings["FilePath"];
         private static string destinationFile = @"c:\temp\test.log";
-        public static QQChatWindow qq = new QQChatWindow(toName);
+        public static QQChatWindow qq = new QQChatWindow("12345");
         private static readonly object _objx = new object();
         public static DBHelper dbhelper = new DBHelper();
         public static int  errcount = 0;
@@ -64,7 +64,7 @@ namespace LogUpLoadService
             string cc = "该账号设置不启动，跳过账号0";
             if (errcount > 10)
             {
-                qq.sendQQMessage(toName, "该账号设置不启动，跳过账号0");
+                qq.sendQQMessage("12345", "该账号设置不启动，跳过账号0");
                 List<string> prs = new List<string>() { "ManagementAgentHost", "MEmu", "MEmuConsole", "MEmuHeadless", "MemuService", "MEmuSVC" };
                 Process[] pro = Process.GetProcesses();//获取已开启的所有进程     
                                                        //遍历所有查找到的进程
@@ -94,7 +94,7 @@ namespace LogUpLoadService
                         {
                             if (line.Contains("输入密码"))
                             {
-                                qq.sendQQMessage(toName, line);
+                                qq.sendQQMessage("12345", line);
 
                                 Console.WriteLine($"已发送:{line}");
                             }
