@@ -9,7 +9,8 @@ using NetCoreBoot.Service;
 using Microsoft.AspNetCore.Http;
 using NetCoreBoot.Common;
 using NetCoreBoot.CommonApplication;
-
+using NetCoreBoot.Entity.CommonModel;
+using Microsoft.Extensions.Options;
 
 namespace ManagerBoot.Admin.Controllers
 {
@@ -20,11 +21,13 @@ namespace ManagerBoot.Admin.Controllers
         private IUserService userServices { get; set; }
 
         private WebHelper webHelper { get; set; }
-        public HomeController(IAccountService accountService, IUserService userServices, WebHelper webHelper)
+        private Content _content { get; set; }
+        public HomeController(IAccountService accountService, IUserService userServices, WebHelper webHelper, IOptions<Content> content)
         {
             this.accountService = accountService;
             this.userServices = userServices;
             this.webHelper = webHelper;
+            _content = content.Value;
         }
 
         public IActionResult Index()
@@ -69,6 +72,7 @@ namespace ManagerBoot.Admin.Controllers
         {
             return View();
         }
+
 
 
     }

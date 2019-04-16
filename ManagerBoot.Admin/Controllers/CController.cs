@@ -11,7 +11,6 @@ namespace ManagerBoot.Admin.Controllers
 {
     public class CController : Controller
     {
-
     //    MySQLDBHelper.DapperMySQLHelper dbHelper = new MySQLDBHelper.DapperMySQLHelper();
     //    public IActionResult R()
     //    {

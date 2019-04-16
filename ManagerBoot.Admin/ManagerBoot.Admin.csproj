@@ -69,6 +69,23 @@
     <ProjectReference Include="..\NetCoreBoot.IService\NetCoreBoot.IService.csproj" />
     <ProjectReference Include="..\NetCoreBoot.Service\NetCoreBoot.Service.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\_ViewImports.cshtml" />
+    <None Include="Views\_ViewStart.cshtml" />
+    <None Include="Views\C\R.cshtml" />
+    <None Include="Views\Home\About.cshtml" />
+    <None Include="Views\Home\Contact.cshtml" />
+    <None Include="Views\Home\Default.cshtml" />
+    <None Include="Views\Home\Index.cshtml" />
+    <None Include="Views\Home\Index1.cshtml" />
+    <None Include="Views\Home\Index2.cshtml" />
+    <None Include="Views\Login\Index.cshtml" />
+    <None Include="Views\Shared\Error.cshtml" />
+    <None Include="Views\Shared\Layout.cshtml" />
+    <None Include="Views\Shared\_Layout.cshtml" />
+    <None Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <None Include="appsettings.json" />
+  </ItemGroup>
   <ProjectExtensions><VisualStudio><UserProperties bower_1json__JSONSchema="http://json.schemastore.org/csslintrc" /></VisualStudio></ProjectExtensions>
 
 </Project>
