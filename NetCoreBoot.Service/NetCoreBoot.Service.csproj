@@ -6,6 +6,10 @@
     <AssemblyName>NetCoreBoot.Service</AssemblyName>
     <PackageId>NetCoreBoot.Service</PackageId>
     <NetStandardImplicitPackageVersion>2.0.0</NetStandardImplicitPackageVersion>
+<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+
   </PropertyGroup>
 
   <ItemGroup>

@@ -5,6 +5,10 @@
     <AssemblyName>NetCoreBoot.CommonApplication</AssemblyName>
     <PackageId>NetCoreBoot.CommonApplication</PackageId>
     <NetStandardImplicitPackageVersion>2.0.0</NetStandardImplicitPackageVersion>
+<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+
   </PropertyGroup>
 
   <ItemGroup>

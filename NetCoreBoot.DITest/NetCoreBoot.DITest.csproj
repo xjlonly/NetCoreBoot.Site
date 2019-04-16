@@ -6,6 +6,10 @@
     <OutputType>Exe</OutputType>
     <PackageId>NetCoreBoot.DITest</PackageId>
     <RuntimeFrameworkVersion>2.1</RuntimeFrameworkVersion>
+<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+
   </PropertyGroup>
 
   <ItemGroup>
