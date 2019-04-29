@@ -8,5 +8,6 @@ namespace NetCoreBoot.Entity.Enums
     {
         MySql=1,
         SqlServer =2,
+        PostgerSql =3,
     }
 }
