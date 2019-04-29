@@ -8,7 +8,7 @@ using NetCoreBoot.IService;
 using NetCoreBoot.Service;
 using Microsoft.AspNetCore.Http;
 using NetCoreBoot.Common;
-using NetCoreBoot.CommonApplication;
+using NetCoreBoot.Core;
 using NetCoreBoot.Entity.CommonModel;
 using Microsoft.Extensions.Options;
 

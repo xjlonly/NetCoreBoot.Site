@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using NetCoreBoot.Common;
 
-namespace NetCoreBoot.CommonApplication
+namespace NetCoreBoot.Core
 { 
     public abstract class WebController : Controller
     {

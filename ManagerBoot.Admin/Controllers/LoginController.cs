@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
-using NetCoreBoot.CommonApplication;
+using NetCoreBoot.Core;
 using NetCoreBoot.Common;
 using NetCoreBoot.IService;
 using NetCoreBoot.Entity;

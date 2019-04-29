@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Security.Authentication;
 using NetCoreBoot.Common;
 
-namespace NetCoreBoot.CommonApplication
+namespace NetCoreBoot.Core
 {
     public class AdminUtils
     {

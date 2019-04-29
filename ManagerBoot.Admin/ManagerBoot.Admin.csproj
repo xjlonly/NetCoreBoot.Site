@@ -62,7 +62,7 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.1.0-preview1-final" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NetCoreBoot.CommonApplication\NetCoreBoot.CommonApplication.csproj" />
+    <ProjectReference Include="..\NetCoreBoot.CommonApplication\NetCoreBoot.Core.csproj" />
     <ProjectReference Include="..\NetCoreBoot.Common\NetCoreBoot.Common.csproj" />
     <ProjectReference Include="..\NetCoreBoot.Data\NetCoreBoot.Data.csproj" />
     <ProjectReference Include="..\NetCoreBoot.Entity\NetCoreBoot.Entity.csproj" />

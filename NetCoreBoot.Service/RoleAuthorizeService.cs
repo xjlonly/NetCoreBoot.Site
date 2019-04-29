@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using NetCoreBoot.IService;
 using NetCoreBoot.Entity;
-using NetCoreBoot.CommonApplication;
+using NetCoreBoot.Core;
 using NetCoreBoot.Common;
 using Chloe;
 

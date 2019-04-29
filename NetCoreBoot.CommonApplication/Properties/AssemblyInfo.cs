@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("SouFun Company")]
-[assembly: AssemblyProduct("NetCoreBoot.CommonApplication")]
+[assembly: AssemblyProduct("NetCoreBoot.Core")]
 [assembly: AssemblyTrademark("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
