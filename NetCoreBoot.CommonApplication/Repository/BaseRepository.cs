@@ -6,93 +6,102 @@ using System.Linq;
 using System.Text;
 using System.Linq.Expressions;
 using Dapper;
+using NetCoreBoot.Entity.CommonModel;
 
 namespace NetCoreBoot.Core.Repository
 {
     public class BaseRepository<T, TKey> : IBaseRepository<T, TKey> where T : class
     {
-        protected IDbConnection _dbconnection;
-        public int Delete(TKey id) => _dbconnection.Delete(id);
+        /// <summary>
+        /// 数据库连接别名
+        /// </summary>
+        protected string _dbConnectionAliasName = "DbBoot";
+        /// <summary>
+        /// 
+        /// </summary>
+        protected DbOption _dbOption;
+        protected IDbConnection _dbConnection;
+        public int Delete(TKey id) => _dbConnection.Delete(id);
 
-        public int Delete(T entity) => _dbconnection.Delete(entity);
+        public int Delete(T entity) => _dbConnection.Delete(entity);
 
-        public Task<int> DeleteAsync(TKey id) => _dbconnection.DeleteAsync(id);
+        public Task<int> DeleteAsync(TKey id) => _dbConnection.DeleteAsync(id);
 
-        public Task<int> DeleteAsync(T entity) => _dbconnection.DeleteAsync(entity);
+        public Task<int> DeleteAsync(T entity) => _dbConnection.DeleteAsync(entity);
 
         public int DeleteList(string conditions, object parameters = null, IDbTransaction transaction = null, int? commandTimeout = null)
         {
-            return _dbconnection.DeleteList<T>(conditions, parameters, transaction, commandTimeout);
+            return _dbConnection.DeleteList<T>(conditions, parameters, transaction, commandTimeout);
         }
 
         public async Task<int> DeleteListAsync(object whereConditions, IDbTransaction transaction = null, int? commandTimeout = null)
         {
-            return await _dbconnection.DeleteListAsync<T>(whereConditions, transaction, commandTimeout);
+            return await _dbConnection.DeleteListAsync<T>(whereConditions, transaction, commandTimeout);
         }
 
         public async Task<int> DeleteListAsync(string conditions, object parameters = null, IDbTransaction transaction = null, int? commandTimeout = null)
         {
-            return await _dbconnection.DeleteListAsync<T>(conditions, parameters, transaction, commandTimeout);
+            return await _dbConnection.DeleteListAsync<T>(conditions, parameters, transaction, commandTimeout);
         }
 
 
-        public T Get(TKey id) => _dbconnection.Get<T>(id);
+        public T Get(TKey id) => _dbConnection.Get<T>(id);
 
         public async Task<T> GetAsync(TKey id)
         {
-            return await _dbconnection.GetAsync<T>(id);
+            return await _dbConnection.GetAsync<T>(id);
         }
 
-        public IEnumerable<T> GetList() => _dbconnection.GetList<T>();
+        public IEnumerable<T> GetList() => _dbConnection.GetList<T>();
 
-        public IEnumerable<T> GetList(object whereConditions) => _dbconnection.GetList<T>(whereConditions);
+        public IEnumerable<T> GetList(object whereConditions) => _dbConnection.GetList<T>(whereConditions);
 
         public IEnumerable<T> GetList(string conditions, object parameters = null) =>
-            _dbconnection.GetList<T>(conditions, parameters);
+            _dbConnection.GetList<T>(conditions, parameters);
 
         public IEnumerable<T> GetListPaged(int pageNumber, int rowsPerpage, string conditions, string orderby,
             object parameters) =>
-            _dbconnection.GetListPaged<T>(pageNumber, rowsPerpage, conditions, orderby, parameters);
+            _dbConnection.GetListPaged<T>(pageNumber, rowsPerpage, conditions, orderby, parameters);
 
         public async Task<IEnumerable<T>> GetListAsync()
         {
-            return await _dbconnection.GetListAsync<T>();
+            return await _dbConnection.GetListAsync<T>();
         }
 
         public async Task<IEnumerable<T>> GetListAsync(object whereConditions)
         {
-            return await _dbconnection.GetListAsync<T>(whereConditions);
+            return await _dbConnection.GetListAsync<T>(whereConditions);
         }
 
         public async Task<IEnumerable<T>> GetListAsync(string conditions, object parameters = null)
         {
-            return await _dbconnection.GetListAsync<T>(conditions, parameters);
+            return await _dbConnection.GetListAsync<T>(conditions, parameters);
         }
 
         public async Task<IEnumerable<T>> GetListPagedAsync(int pageNumber, int rowsPerPage, string conditions, string orderby, object parameters = null)
         {
-            return await _dbconnection.GetListPagedAsync<T>(pageNumber, rowsPerPage, conditions, orderby, parameters);
+            return await _dbConnection.GetListPagedAsync<T>(pageNumber, rowsPerPage, conditions, orderby, parameters);
         }
 
-        public int? Insert(T entity) => _dbconnection.Insert(entity);
+        public int? Insert(T entity) => _dbConnection.Insert(entity);
 
         public async Task<int?> InsertAsync(T entity)
         {
-            return await _dbconnection.InsertAsync(entity);
+            return await _dbConnection.InsertAsync(entity);
         }
 
-        public int RecordCount(string conditions = "", object parameters = null) => _dbconnection.RecordCount<T>(conditions,parameters);
+        public int RecordCount(string conditions = "", object parameters = null) => _dbConnection.RecordCount<T>(conditions,parameters);
 
         public async Task<int> RecordCountAsync(string conditions = "", object parameters = null)
         {
-            return await _dbconnection.RecordCountAsync<T>(conditions, parameters);
+            return await _dbConnection.RecordCountAsync<T>(conditions, parameters);
         }
 
-        public int Update(T entity) => _dbconnection.Update<T>(entity);
+        public int Update(T entity) => _dbConnection.Update<T>(entity);
 
         public async Task<int> UpdateAsync(T entity)
         {
-            return await _dbconnection.UpdateAsync<T>(entity);
+            return await _dbConnection.UpdateAsync<T>(entity);
         }
 
         #region IDisposable Support

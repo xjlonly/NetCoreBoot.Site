@@ -7,5 +7,11 @@
   <ItemGroup>
     <PackageReference Include="Dapper" Version="1.60.6" />
     <PackageReference Include="Dapper.SimpleCRUD" Version="2.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NetCoreBoot.CommonApplication\NetCoreBoot.Core.csproj" />
+    <ProjectReference Include="..\NetCoreBoot.IRepository\NetCoreBoot.IRepository.csproj" />
   </ItemGroup>
 </Project>

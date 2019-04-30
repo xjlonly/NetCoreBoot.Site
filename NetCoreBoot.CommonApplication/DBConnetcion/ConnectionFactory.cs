@@ -8,7 +8,7 @@ using MySql.Data.MySqlClient;
 using System.Data.SqlClient;
 using Npgsql;
 
-namespace NetCoreBoot.Core.Repository
+namespace NetCoreBoot.Core.DBConnection
 {
     /// <summary>
     /// 数据库连接工厂类

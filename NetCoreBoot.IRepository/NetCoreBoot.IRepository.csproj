@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\NetCoreBoot.CommonApplication\NetCoreBoot.Core.csproj" />
+    <ProjectReference Include="..\NetCoreBoot.Entity\NetCoreBoot.Entity.csproj" />
+  </ItemGroup>
+
 </Project>
