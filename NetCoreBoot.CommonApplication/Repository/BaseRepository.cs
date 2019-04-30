@@ -9,14 +9,14 @@ using Dapper;
 
 namespace NetCoreBoot.Core.Repository
 {
-    public class BaseRepository<T, Tkey> : IBaseRepository<T, Tkey> where T : class
+    public class BaseRepository<T, TKey> : IBaseRepository<T, TKey> where T : class
     {
         protected IDbConnection _dbconnection;
-        public int Delete(Tkey id) => _dbconnection.Delete(id);
+        public int Delete(TKey id) => _dbconnection.Delete(id);
 
         public int Delete(T entity) => _dbconnection.Delete(entity);
 
-        public Task<int> DeleteAsync(Tkey id) => _dbconnection.DeleteAsync(id);
+        public Task<int> DeleteAsync(TKey id) => _dbconnection.DeleteAsync(id);
 
         public Task<int> DeleteAsync(T entity) => _dbconnection.DeleteAsync(entity);
 
@@ -36,78 +36,63 @@ namespace NetCoreBoot.Core.Repository
         }
 
 
-        public T Get(Tkey id) => _dbconnection.Get<T>(id);
+        public T Get(TKey id) => _dbconnection.Get<T>(id);
 
-        public async Task<T> GetAsync(Tkey id)
+        public async Task<T> GetAsync(TKey id)
         {
             return await _dbconnection.GetAsync<T>(id);
         }
 
-        public IEnumerable<T> GetList() => _dbconnection.GetList();
+        public IEnumerable<T> GetList() => _dbconnection.GetList<T>();
 
-        public IEnumerable<T> GetList(object whereConditions)
+        public IEnumerable<T> GetList(object whereConditions) => _dbconnection.GetList<T>(whereConditions);
+
+        public IEnumerable<T> GetList(string conditions, object parameters = null) =>
+            _dbconnection.GetList<T>(conditions, parameters);
+
+        public IEnumerable<T> GetListPaged(int pageNumber, int rowsPerpage, string conditions, string orderby,
+            object parameters) =>
+            _dbconnection.GetListPaged<T>(pageNumber, rowsPerpage, conditions, orderby, parameters);
+
+        public async Task<IEnumerable<T>> GetListAsync()
         {
-            throw new NotImplementedException();
+            return await _dbconnection.GetListAsync<T>();
         }
 
-        public IEnumerable<T> GetList(string conditions, object parameters = null)
+        public async Task<IEnumerable<T>> GetListAsync(object whereConditions)
         {
-            throw new NotImplementedException();
+            return await _dbconnection.GetListAsync<T>(whereConditions);
         }
 
-        public IEnumerable<T> GetListPaged(int pageNumber, int rowsPerpage, string conditions, string orderby, object parameters)
+        public async Task<IEnumerable<T>> GetListAsync(string conditions, object parameters = null)
         {
-            throw new NotImplementedException();
+            return await _dbconnection.GetListAsync<T>(conditions, parameters);
         }
 
-        public Task<IEnumerable<T>> GetListAsync()
+        public async Task<IEnumerable<T>> GetListPagedAsync(int pageNumber, int rowsPerPage, string conditions, string orderby, object parameters = null)
         {
-            throw new NotImplementedException();
+            return await _dbconnection.GetListPagedAsync<T>(pageNumber, rowsPerPage, conditions, orderby, parameters);
         }
 
-        public Task<IEnumerable<T>> GetListAsync(object whereConditions)
+        public int? Insert(T entity) => _dbconnection.Insert(entity);
+
+        public async Task<int?> InsertAsync(T entity)
         {
-            throw new NotImplementedException();
+            return await _dbconnection.InsertAsync(entity);
         }
 
-        public Task<IEnumerable<T>> GetListAsync(string conditions, object parameters = null)
+        public int RecordCount(string conditions = "", object parameters = null) => _dbconnection.RecordCount<T>(conditions,parameters);
+
+        public async Task<int> RecordCountAsync(string conditions = "", object parameters = null)
         {
-            throw new NotImplementedException();
+            return await _dbconnection.RecordCountAsync<T>(conditions, parameters);
         }
 
-        public Task<IEnumerable<T>> GetListPagedAsync(int pageNumber, int rowsPerPage, string conditions, string orderby, object parameters = null)
-        {
-            throw new NotImplementedException();
-        }
+        public int Update(T entity) => _dbconnection.Update<T>(entity);
 
-        public int? Insert(T entity)
+        public async Task<int> UpdateAsync(T entity)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<int?> InsertAsync(T entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int RecordCount(string conditions = "", object parameters = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<int> RecordCountAsync(string conditions = "", object parameters = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int Update(T entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<int> UpdateAsync(T entity)
-        {
-            throw new NotImplementedException();
+            return await _dbconnection.UpdateAsync<T>(entity);
         }
 
         #region IDisposable Support
