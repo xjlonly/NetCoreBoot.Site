@@ -6,14 +6,13 @@ using Chloe;
 using NetCoreBoot.Data;
 using Chloe.Infrastructure;
 using System.Data;
-using NetCoreBoot.IService;
 using NetCoreBoot.Entity;
 using NetCoreBoot.Common;
 using System.Linq.Expressions;
 
 namespace NetCoreBoot.Service
 {
-    public abstract class BaseService : IBaseService, ISysLogService
+    public abstract class BaseService 
     {
         IDbContext _dbContext = null;
 
@@ -97,22 +96,22 @@ namespace NetCoreBoot.Service
   
 
 
-        void ISysLogService.Log(string userid, string account, string realName, string ip, LogType logType, string moduleName, bool? result, string description)
-        {
-            Sys_Log log = this.CreateLog(userid, account, realName, ip, logType, moduleName, result, description);
-            this.DbContext.Insert(log);
-        }
+        //void ISysLogService.Log(string userid, string account, string realName, string ip, LogType logType, string moduleName, bool? result, string description)
+        //{
+        //    Sys_Log log = this.CreateLog(userid, account, realName, ip, logType, moduleName, result, description);
+        //    this.DbContext.Insert(log);
+        //}
 
 
-        Task ISysLogService.LogSync(string userid,string account, string realName, string ip, LogType logType, string moduleName, bool? result, string description)
-        {
-            Sys_Log log = this.CreateLog(userid, account, realName, ip, logType, moduleName, result, description);
+        //Task ISysLogService.LogSync(string userid,string account, string realName, string ip, LogType logType, string moduleName, bool? result, string description)
+        //{
+        //    Sys_Log log = this.CreateLog(userid, account, realName, ip, logType, moduleName, result, description);
 
-            return this.DoAsync(dbContext =>
-            {
-                dbContext.Insert(log);
-            });
-        }
+        //    return this.DoAsync(dbContext =>
+        //    {
+        //        dbContext.Insert(log);
+        //    });
+        //}
 
         private Sys_Log CreateLog(string userid, string account, string realName, string ip, LogType logType, string moduleName, bool? result, string description, string moduleId="")
         {

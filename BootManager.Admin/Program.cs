@@ -7,6 +7,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using NLog.Web;
 
 namespace BootManager.Admin
 {
@@ -19,6 +20,21 @@ namespace BootManager.Admin
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+                //加载文件新入口
+                .ConfigureAppConfiguration((hostcontext, config) =>
+                {
+                    var env = hostcontext.HostingEnvironment;
+                    config.AddJsonFile("appsettings.json", true, true)
+                        .AddJsonFile($"appsettings.{env.EnvironmentName}.json", true, true)
+                        .AddEnvironmentVariables();
+                })
+                .UseStartup<Startup>()
+                .ConfigureLogging(logging =>
+                {
+                    logging.ClearProviders(); //清除日志提供程序 引入第三方日志组件时使用
+                    logging.SetMinimumLevel(LogLevel.Information); //设置日志级别为info
+                    logging.AddConsole(); //添加日志控制程序——控制台上
+                }).UseNLog();
+
     }
 }

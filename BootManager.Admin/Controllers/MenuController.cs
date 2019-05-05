@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using BootManager.Admin.Models;
+using NetCoreBoot.IServices;
 
 namespace BootManager.Admin.Controllers
 {
-    public class HomeController : Controller
+    public class MenuController : Controller
     {
-        public IActionResult Index()
+        private IMenuService menuService;
+        public MenuController(IMenuService service)
         {
-            return View();
+            menuService = service;
         }
-
-        public IActionResult Main()
+        public IActionResult Index()
         {
             return View();
         }

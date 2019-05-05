@@ -17,19 +17,19 @@ layui.use(['bodyTab','form','element','layer','jquery'],function(){
 	//通过顶部菜单获取左侧二三级菜单   注：此处只做演示之用，实际开发中通过接口传参的方式获取导航数据
 	function getData(json){
 		$.getJSON(tab.tabConfig.url,function(data){
-			if(json == "contentManagement"){
+			if(json === "contentManagement"){
 				dataStr = data.contentManagement;
 				//重新渲染左侧菜单
 				tab.render();
-			}else if(json == "memberCenter"){
+			}else if(json === "memberCenter"){
 				dataStr = data.memberCenter;
 				//重新渲染左侧菜单
 				tab.render();
-			}else if(json == "systemeSttings"){
+			}else if(json === "systemeSttings"){
 				dataStr = data.systemeSttings;
 				//重新渲染左侧菜单
 				tab.render();
-			}else if(json == "seraphApi"){
+			}else if(json === "seraphApi"){
                 dataStr = data.seraphApi;
                 //重新渲染左侧菜单
                 tab.render();
@@ -39,7 +39,7 @@ layui.use(['bodyTab','form','element','layer','jquery'],function(){
 	//页面加载时判断左侧菜单是否显示
 	//通过顶部菜单获取左侧菜单
 	$(".topLevelMenus li,.mobileTopLevelMenus dd").click(function(){
-		if($(this).parents(".mobileTopLevelMenus").length != "0"){
+		if($(this).parents(".mobileTopLevelMenus").length !== "0"){
 			$(".topLevelMenus li").eq($(this).index()).addClass("layui-this").siblings().removeClass("layui-this");
 		}else{
 			$(".mobileTopLevelMenus dd").eq($(this).index()).addClass("layui-this").siblings().removeClass("layui-this");
@@ -76,7 +76,7 @@ layui.use(['bodyTab','form','element','layer','jquery'],function(){
 	// 添加新窗口
 	$("body").on("click",".layui-nav .layui-nav-item a:not('.mobileTopLevelMenus .layui-nav-item a')",function(){
 		//如果不存在子级
-		if($(this).siblings().length == 0){
+		if($(this).siblings().length === 0){
 			addTab($(this));
 			$('body').removeClass('site-mobile');  //移动端点击菜单关闭菜单层
 		}
@@ -95,15 +95,15 @@ layui.use(['bodyTab','form','element','layer','jquery'],function(){
     })
 
 	//刷新后还原打开的窗口
-    if(cacheStr == "true") {
-        if (window.sessionStorage.getItem("menu") != null) {
+    if(cacheStr === "true") {
+        if (window.sessionStorage.getItem("menu") !== null) {
             menu = JSON.parse(window.sessionStorage.getItem("menu"));
             curmenu = window.sessionStorage.getItem("curmenu");
             var openTitle = '';
             for (var i = 0; i < menu.length; i++) {
                 openTitle = '';
                 if (menu[i].icon) {
-                    if (menu[i].icon.split("-")[0] == 'icon') {
+                    if (menu[i].icon.split("-")[0] === 'icon') {
                         openTitle += '<i class="seraph ' + menu[i].icon + '"></i>';
                     } else {
                         openTitle += '<i class="layui-icon">' + menu[i].icon + '</i>';
@@ -117,10 +117,10 @@ layui.use(['bodyTab','form','element','layer','jquery'],function(){
                     id: menu[i].layId
                 })
                 //定位到刷新前的窗口
-                if (curmenu != "undefined") {
-                    if (curmenu == '' || curmenu == "null") {  //定位到后台首页
+                if (curmenu !== "undefined") {
+                    if (curmenu === '' || curmenu === "null") {  //定位到后台首页
                         element.tabChange("bodyTab", '');
-                    } else if (JSON.parse(curmenu).title == menu[i].title) {  //定位到刷新前的页面
+                    } else if (JSON.parse(curmenu).title === menu[i].title) {  //定位到刷新前的页面
                         element.tabChange("bodyTab", menu[i].layId);
                     }
                 } else {
