@@ -8,7 +8,7 @@ layui.use(['bodyTab','form','element','layer','jquery'],function(){
 	var form = layui.form,
 		element = layui.element;
 		$ = layui.$;
-    	layer = parent.layer === undefined ? layui.layer : top.layer;
+        layer = parent.layer === undefined ? layui.layer : top.layer;
 		tab = layui.bodyTab({
 			openTabNum : "50",  //最大可打开窗口数量
 			url : "json/navs.json" //获取菜单json地址
@@ -25,8 +25,8 @@ layui.use(['bodyTab','form','element','layer','jquery'],function(){
 				dataStr = data.memberCenter;
 				//重新渲染左侧菜单
 				tab.render();
-			}else if(json === "systemeSttings"){
-				dataStr = data.systemeSttings;
+			}else if(json === "systemSttings"){
+				dataStr = data.systemSttings;
 				//重新渲染左侧菜单
 				tab.render();
 			}else if(json === "seraphApi"){
@@ -63,7 +63,7 @@ layui.use(['bodyTab','form','element','layer','jquery'],function(){
 	})
 
 	//通过顶部菜单获取左侧二三级菜单   注：此处只做演示之用，实际开发中通过接口传参的方式获取导航数据
-	getData("contentManagement");
+    getData("systemSttings");
 
 	//手机设备的简单适配
     $('.site-tree-mobile').on('click', function(){

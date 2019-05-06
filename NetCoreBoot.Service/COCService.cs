@@ -1,12 +1,11 @@
 ﻿using NetCoreBoot.Entity;
-using NetCoreBoot.IService;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace NetCoreBoot.Service
 {
-    public class COCService: BaseService, ICOCService
+    public class COCService: BaseService
     {
         public bool GetCOCLogList(int Id)
         {

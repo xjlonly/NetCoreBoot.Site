@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using NetCoreBoot.IService;
 using NetCoreBoot.Entity;
 using NetCoreBoot.Core;
 using NetCoreBoot.Common;
@@ -11,7 +10,7 @@ using Chloe;
 
 namespace NetCoreBoot.Service
 {
-    public class RoleAuthorizeService : BaseService, IRoleAuthorizeService 
+    public class RoleAuthorizeService : BaseService 
     {
         /// <summary>
         /// 获取角色权限列表

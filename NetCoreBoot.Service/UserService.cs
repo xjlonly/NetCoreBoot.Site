@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using NetCoreBoot.IService;
 
 namespace NetCoreBoot.Service
 {
-    public class UserService :BaseService, IUserService
+    public class UserService :BaseService
     {
         //public IAccountService Account { get; private set; }
 

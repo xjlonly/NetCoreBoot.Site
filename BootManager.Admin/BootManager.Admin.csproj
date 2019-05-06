@@ -17,6 +17,8 @@
     <ProjectReference Include="..\NetCoreBoot.Common\NetCoreBoot.Common.csproj" />
     <ProjectReference Include="..\NetCoreBoot.Entity\NetCoreBoot.Entity.csproj" />
     <ProjectReference Include="..\NetCoreBoot.IService\NetCoreBoot.IService.csproj" />
+    <ProjectReference Include="..\NetCoreBoot.Repository.MySql\NetCoreBoot.Repository.MySql.csproj" />
+    <ProjectReference Include="..\NetCoreBoot.Service\NetCoreBoot.Service.csproj" />
   </ItemGroup>
 
 </Project>
