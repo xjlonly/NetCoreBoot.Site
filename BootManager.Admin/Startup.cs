@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NetCoreBoot.Entity.CommonModel;
+using Newtonsoft.Json;
 
 namespace BootManager.Admin
 {
@@ -41,6 +42,16 @@ namespace BootManager.Admin
                 option.FormFieldName = "AntiforgeryKey_xjlonly";
                 option.HeaderName = "X-CSRF-TOKEN-xjlonly";
                 option.SuppressXFrameOptionsHeader = false;
+            });
+            //Newtonsoft序列化全局设置
+            JsonSerializerSettings setting = new JsonSerializerSettings();
+            JsonConvert.DefaultSettings = new Func<JsonSerializerSettings>(() =>
+            {
+                setting.DateFormatHandling = DateFormatHandling.MicrosoftDateFormat;
+                setting.DateFormatString = "yyyy-MM-dd HH:mm:ss";
+                //忽略空值
+                //setting.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
+                return setting;
             });
 
             services.AddMvc()

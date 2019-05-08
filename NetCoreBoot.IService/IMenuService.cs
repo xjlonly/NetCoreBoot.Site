@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using NetCoreBoot.ViewModel;
 
 namespace NetCoreBoot.IServices
 {
@@ -12,7 +13,7 @@ namespace NetCoreBoot.IServices
         /// </summary>
         /// <param name="model">查询实体</param>
         /// <returns>table数据</returns>
-        //TableDataModel LoadData(MenuRequestModel model);
+        TableDataModel LoadData(MenuRequestModel model);
 
         /// <summary>
         /// 新增或者修改服务

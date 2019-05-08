@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NetCoreBoot.Entity\NetCoreBoot.Entity.csproj" />
+    <ProjectReference Include="..\NetCoreBoot.ViewModel\NetCoreBoot.ViewModel.csproj" />
   </ItemGroup>
 
 </Project>

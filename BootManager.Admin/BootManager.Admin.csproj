@@ -10,6 +10,7 @@
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     <PackageReference Include="NLog.Web.AspNetCore" Version="4.8.1" />
   </ItemGroup>
 
@@ -17,8 +18,8 @@
     <ProjectReference Include="..\NetCoreBoot.Common\NetCoreBoot.Common.csproj" />
     <ProjectReference Include="..\NetCoreBoot.Entity\NetCoreBoot.Entity.csproj" />
     <ProjectReference Include="..\NetCoreBoot.IService\NetCoreBoot.IService.csproj" />
-    <ProjectReference Include="..\NetCoreBoot.Repository.MySql\NetCoreBoot.Repository.MySql.csproj" />
     <ProjectReference Include="..\NetCoreBoot.Service\NetCoreBoot.Service.csproj" />
+    <ProjectReference Include="..\NetCoreBoot.ViewModel\NetCoreBoot.ViewModel.csproj" />
   </ItemGroup>
 
 </Project>

@@ -4,6 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using NetCoreBoot.IServices;
+using NetCoreBoot.ViewModel;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace BootManager.Admin.Controllers
 {
@@ -17,6 +20,11 @@ namespace BootManager.Admin.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        public string LoadData([FromQuery]MenuRequestModel requestModel)
+        {
+            return JsonConvert.SerializeObject(menuService.LoadData(requestModel));
         }
     }
 }

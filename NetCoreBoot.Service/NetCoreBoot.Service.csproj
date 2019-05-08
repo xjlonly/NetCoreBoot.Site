@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NetCoreBoot.CommonApplication\NetCoreBoot.Core.csproj" />
+    <ProjectReference Include="..\NetCoreBoot.IRepository\NetCoreBoot.IRepository.csproj" />
     <ProjectReference Include="..\NetCoreBoot.IService\NetCoreBoot.IService.csproj" />
     <ProjectReference Include="..\NetCoreBoot.Entity\NetCoreBoot.Entity.csproj" />
     <ProjectReference Include="..\NetCoreBoot.Data\NetCoreBoot.Data.csproj" />
