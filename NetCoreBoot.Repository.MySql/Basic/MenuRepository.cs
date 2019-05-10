@@ -33,6 +33,7 @@ namespace NetCoreBoot.Repository.MySql
                 throw new ArgumentNullException(nameof(DbOption));
             }
             _dbConnection = ConnectionFactory.CreateConnection(_dbOption.DbType, _dbOption.ConnectionString);
+            this.SetDialect();
         }
     }
 }

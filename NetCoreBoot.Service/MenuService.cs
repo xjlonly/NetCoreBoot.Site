@@ -13,15 +13,15 @@ namespace NetCoreBoot.Service
        
         public TableDataModel LoadData(MenuRequestModel model)
         {
-            string where = "  where IsDelete=0";
+            string where = "  where IsDelete=0 ";
             if (!model.Key.IsEmptyOrNull())
             {
-                where += " And DisplayName like '%@key%'";
+                where += " and DisplayName like '%@key%'";
             }
 
             return new TableDataModel
             {
-                count = menuRepository.RecordCount(where, new {model.Key}),
+                count = menuRepository.RecordCount(where),
                 data = menuRepository.GetListPaged(model.PageIndex, model.PageSize, where, "", new {model.Key}).ToList()
             };
         }

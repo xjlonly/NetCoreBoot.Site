@@ -21,6 +21,33 @@ namespace NetCoreBoot.Core.Repository
         /// </summary>
         protected DbOption _dbOption;
         protected IDbConnection _dbConnection;
+
+        protected void SetDialect()
+        {
+            if (_dbOption == null)
+            {
+                throw new ArgumentNullException();
+            }
+            string _dbtype = _dbOption.DbType.ToLower();
+            if (_dbtype == SimpleCRUD.Dialect.PostgreSQL.ToString().ToLower())
+            {
+                SimpleCRUD.SetDialect(SimpleCRUD.Dialect.PostgreSQL);
+            }
+            else if (_dbtype == SimpleCRUD.Dialect.SQLite.ToString().ToLower())
+            {
+                SimpleCRUD.SetDialect(SimpleCRUD.Dialect.SQLite);
+            }
+            else if (_dbtype == SimpleCRUD.Dialect.MySQL.ToString().ToLower())
+            {
+                SimpleCRUD.SetDialect(SimpleCRUD.Dialect.MySQL);
+            }
+            else
+            {
+                SimpleCRUD.SetDialect(SimpleCRUD.Dialect.SQLServer);
+            }
+        }
+        
+        
         public int Delete(TKey id) => _dbConnection.Delete(id);
 
         public int Delete(T entity) => _dbConnection.Delete(entity);

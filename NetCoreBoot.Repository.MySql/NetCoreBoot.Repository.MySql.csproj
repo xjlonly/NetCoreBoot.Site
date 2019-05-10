@@ -4,4 +4,10 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\NetCoreBoot.CommonApplication\NetCoreBoot.Core.csproj" />
+    <ProjectReference Include="..\NetCoreBoot.Entity\NetCoreBoot.Entity.csproj" />
+    <ProjectReference Include="..\NetCoreBoot.IRepository\NetCoreBoot.IRepository.csproj" />
+  </ItemGroup>
+
 </Project>
