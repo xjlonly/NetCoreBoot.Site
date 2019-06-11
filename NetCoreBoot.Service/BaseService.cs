@@ -113,25 +113,25 @@ namespace NetCoreBoot.Service
         //    });
         //}
 
-        private Sys_Log CreateLog(string userid, string account, string realName, string ip, LogType logType, string moduleName, bool? result, string description, string moduleId="")
-        {
-            Sys_Log entity = new Sys_Log
-            {
-                F_Id = GuID.CreateGuid(),
-                F_Account = account,
-                F_ModuleId = moduleId,
-                F_Result = result,
-                F_CreatorTime = DateTime.Now,
-                F_CreatorUserId = userid,
-                F_Description = description,
-                F_IPAddress = ip,
-                F_Type = logType.ToString(),
-                F_NickName = realName,
-                F_ModuleName = moduleName,
-            };
+        //private Sys_Log CreateLog(string userid, string account, string realName, string ip, LogType logType, string moduleName, bool? result, string description, string moduleId="")
+        //{
+        //    Sys_Log entity = new Sys_Log
+        //    {
+        //        F_Id = GuID.CreateGuid(),
+        //        F_Account = account,
+        //        F_ModuleId = moduleId,
+        //        F_Result = result,
+        //        F_CreatorTime = DateTime.Now,
+        //        F_CreatorUserId = userid,
+        //        F_Description = description,
+        //        F_IPAddress = ip,
+        //        F_Type = logType.ToString(),
+        //        F_NickName = realName,
+        //        F_ModuleName = moduleName,
+        //    };
 
-            return entity;
-        }
+        //    return entity;
+        //}
 
      
         #endregion

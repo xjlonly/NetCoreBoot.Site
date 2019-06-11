@@ -22,29 +22,29 @@ namespace NetCoreBoot.Service
             return this.Query<Sys_RoleAuthorize>().Where(x => x.F_ObjectId == ObjectId).ToList();
         }
 
-        public List<Sys_Module> GetMenuList(string roleId)
-        {
-            var data = new List<Sys_Module>();
-            var moduledata = Query<Sys_Module>().OrderBy(x => x.F_SortCode).ToList();
-            if (AdminUtils.GetCurrentCookie().IsAdmin)
-            {
-                data = moduledata;
-            }
-            else
-            {
-                //获得模块类型
-                var authorizedata = Query<Sys_RoleAuthorize>().Where(x => x.F_ObjectId == roleId && x.F_ItemType == 1).ToList();
-                authorizedata.ForEach(model =>
-                {
-                    Sys_Module item = moduledata.Find(x => x.F_Id == model.F_Id);
-                    if (item != null)
-                    {
-                        data.Add(item);
-                    }
-                });
-            }
-            return data;
-        }
+        //public List<Sys_Module> GetMenuList(string roleId)
+        //{
+        //    var data = new List<Sys_Module>();
+        //    var moduledata = Query<Sys_Module>().OrderBy(x => x.F_SortCode).ToList();
+        //    if (AdminUtils.GetCurrentCookie().IsAdmin)
+        //    {
+        //        data = moduledata;
+        //    }
+        //    else
+        //    {
+        //        //获得模块类型
+        //        var authorizedata = Query<Sys_RoleAuthorize>().Where(x => x.F_ObjectId == roleId && x.F_ItemType == 1).ToList();
+        //        authorizedata.ForEach(model =>
+        //        {
+        //            Sys_Module item = moduledata.Find(x => x.F_Id == model.F_Id);
+        //            if (item != null)
+        //            {
+        //                data.Add(item);
+        //            }
+        //        });
+        //    }
+        //    return data;
+        //}
 
         /// <summary>
         /// 获取角色/岗位列表
@@ -71,24 +71,24 @@ namespace NetCoreBoot.Service
         /// <param name="itemId"></param>
         /// <param name="keyword"></param>
         /// <returns></returns>
-        public  List<Sys_ItemsDetail> GetItemDetailList(string itemId = "", string keyword = "")
-        {
-            var expression = LinqExtension.True<Sys_ItemsDetail>();
-            IQuery<Sys_ItemsDetail> iq = Query<Sys_ItemsDetail>();
-            if(itemId.NotNullOrEmpty())
-            {
-                //expression = expression.And(x => x.F_ItemId == itemId);
-                iq = iq.Where(x => x.F_ItemId == itemId);
-            }
-            if(keyword.NotNullOrEmpty())
-            {
-                //expression = expression.And(x => x.F_ItemName.Contains(keyword.Trim()));
-                //expression = expression.Or(x => x.F_ItemCode.Contains(keyword.Trim()));
+        //public  List<Sys_ItemsDetail> GetItemDetailList(string itemId = "", string keyword = "")
+        //{
+        //    var expression = LinqExtension.True<Sys_ItemsDetail>();
+        //    IQuery<Sys_ItemsDetail> iq = Query<Sys_ItemsDetail>();
+        //    if(itemId.NotNullOrEmpty())
+        //    {
+        //        //expression = expression.And(x => x.F_ItemId == itemId);
+        //        iq = iq.Where(x => x.F_ItemId == itemId);
+        //    }
+        //    if(keyword.NotNullOrEmpty())
+        //    {
+        //        //expression = expression.And(x => x.F_ItemName.Contains(keyword.Trim()));
+        //        //expression = expression.Or(x => x.F_ItemCode.Contains(keyword.Trim()));
 
-                iq = iq.Where(x => x.F_ItemName.Contains(keyword.Trim()) || x.F_ItemCode.Contains(keyword.Trim()));
-            }
-            return iq.OrderBy(x => x.F_SortCode).ToList();
-        }
+        //        iq = iq.Where(x => x.F_ItemName.Contains(keyword.Trim()) || x.F_ItemCode.Contains(keyword.Trim()));
+        //    }
+        //    return iq.OrderBy(x => x.F_SortCode).ToList();
+        //}
 
         //获取菜单按钮列表
         public List<Sys_ModuleButton> GetButtonList(string roleId)

@@ -1,5 +1,0 @@
-﻿{
-  "ConnectionStrings": {
-    "DefaultConnection": "User ID=coc_r;Password=123456;Host=139.199.117.109;Database=coc;Pooling=true;"
-  }
-}
