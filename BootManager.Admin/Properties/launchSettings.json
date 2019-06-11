@@ -1,7 +1,11 @@
-﻿{
+{
   "iisSettings": {
-    "windowsAuthentication": false, 
-    "anonymousAuthentication": true, 
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://test.core.com/",
+      "sslPort": 0
+    },
     "iisExpress": {
       "applicationUrl": "http://localhost:26274",
       "sslPort": 0
@@ -16,12 +20,12 @@
       }
     },
     "BootManager.Admin": {
-      "commandName": "Project",
+      "commandName": "IIS",
       "launchBrowser": true,
-      "applicationUrl": "http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "applicationUrl": "http://localhost:5000"
     }
   }
 }

@@ -141,7 +141,7 @@ function addTab(_this){
 	tab.tabAdd(_this);
 }
 
-//捐赠弹窗
+//点击弹窗
 function donation(){
 	layer.tab({
 		area : ['260px', '367px'],
