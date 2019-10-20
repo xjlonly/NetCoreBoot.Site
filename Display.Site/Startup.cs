@@ -30,7 +30,12 @@ namespace Display.Site
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            //CSRF
+            services.AddAntiforgery(option=> {
+                option.FormFieldName = "Antiforgery_xjlonly";
+                option.HeaderName = "X-CSRF-TOKEN-xjlonly";//防伪系统使用的标头的名称。 如果null，系统会认为只有窗体数据。
+                option.SuppressXFrameOptionsHeader = false;
+            });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

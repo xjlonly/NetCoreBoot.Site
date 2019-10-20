@@ -8,6 +8,7 @@ using NetCoreBoot.ViewModel;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
+// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 namespace BootManager.Admin.Controllers
 {
     public class MenuController : Controller
@@ -21,7 +22,6 @@ namespace BootManager.Admin.Controllers
         {
             return View();
         }
-
         public string LoadData([FromQuery]MenuRequestModel requestModel)
         {
             return JsonConvert.SerializeObject(menuService.LoadData(requestModel));

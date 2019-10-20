@@ -83,21 +83,25 @@ namespace BootManager.Admin
             app.UseMvc(ConfigureRoutes);
         }
 
-
-        public void ConfigureRoutes(IRouteBuilder builder)
+        private void ConfigureRoutes(IRouteBuilder builder)
         {
             builder.MapRoute(
-                name: "default",
+                name:"default", 
                 template: "{controller=Home}/{action=Index}"
-            );
-            builder.MapRoute(
-                name:"statichtml",
-                template:"{controller=Home}/{action=Index}.html/{id?}"
                 );
+            builder.MapRoute(
+                name: "statichtml",
+                template: "{controller=Home}/{action=Index}.html"
+            );
 
             builder.MapRoute(
-                name: "apido",
-                template: "{controller=Home}/{action=Index}.html/{id?}"
+                name: "api",
+                template: "{controller}/{action}.do"
+            );
+
+            builder.MapRoute(
+                name: "replenish",
+                template: "{controller=Login}/{action=Index}/{id?}"
             );
         }
     }

@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< Updated upstream
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>BootManager.Admin</title>
@@ -14,6 +15,18 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
     <link rel="icon" href="~/favicon.ico">
+=======
+    <meta charset="utf-8">
+    <title>layui后台管理模板 2.0</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="icon" href="favicon.ico">
+>>>>>>> Stashed changes
     <link rel="stylesheet" href="~/layui/css/layui.css" media="all" />
     <link rel="stylesheet" href="~/css/index.css" media="all" />
 </head>
@@ -22,10 +35,42 @@
         <!-- 顶部 -->
         <div class="layui-header header">
             <div class="layui-main mag0">
+<<<<<<< Updated upstream
                 <a href="#" class="logo">Manager 1.0</a>
                 <!-- 显示/隐藏菜单 -->
                 <a href="javascript:;" class="seraph hideMenu icon-caidan"></a>
                 <!-- 顶级菜单 -->
+=======
+                <a href="#" class="logo">layuiCMS 2.0</a>
+                <!-- 显示/隐藏菜单 -->
+                <a href="javascript:;" class="seraph hideMenu icon-caidan"></a>
+                <!-- 顶级菜单 -->
+                <ul class="layui-nav mobileTopLevelMenus" mobile>
+                    <li class="layui-nav-item" data-menu="contentManagement">
+                        <a href="javascript:;"><i class="seraph icon-caidan"></i><cite>layuiCMS</cite></a>
+                        <dl class="layui-nav-child">
+                            <dd class="layui-this" data-menu="contentManagement"><a href="javascript:;"><i class="layui-icon" data-icon="&#xe63c;">&#xe63c;</i><cite>内容管理</cite></a></dd>
+                            <dd data-menu="memberCenter"><a href="javascript:;"><i class="seraph icon-icon10" data-icon="icon-icon10"></i><cite>用户中心</cite></a></dd>
+                            <dd data-menu="systemeSttings"><a href="javascript:;"><i class="layui-icon" data-icon="&#xe620;">&#xe620;</i><cite>系统设置</cite></a></dd>
+                            <dd data-menu="seraphApi"><a href="javascript:;"><i class="layui-icon" data-icon="&#xe705;">&#xe705;</i><cite>使用文档</cite></a></dd>
+                        </dl>
+                    </li>
+                </ul>
+                <ul class="layui-nav topLevelMenus" pc>
+                    <li class="layui-nav-item layui-this" data-menu="contentManagement">
+                        <a href="javascript:;"><i class="layui-icon" data-icon="&#xe63c;">&#xe63c;</i><cite>内容管理</cite></a>
+                    </li>
+                    <li class="layui-nav-item" data-menu="memberCenter" pc>
+                        <a href="javascript:;"><i class="seraph icon-icon10" data-icon="icon-icon10"></i><cite>用户中心</cite></a>
+                    </li>
+                    <li class="layui-nav-item" data-menu="systemeSttings" pc>
+                        <a href="javascript:;"><i class="layui-icon" data-icon="&#xe620;">&#xe620;</i><cite>系统设置</cite></a>
+                    </li>
+                    <li class="layui-nav-item" data-menu="seraphApi" pc>
+                        <a href="javascript:;"><i class="layui-icon" data-icon="&#xe705;">&#xe705;</i><cite>使用文档</cite></a>
+                    </li>
+                </ul>
+>>>>>>> Stashed changes
                 <!-- 顶部右侧菜单 -->
                 <ul class="layui-nav top_menu">
                     <li class="layui-nav-item" pc>
@@ -35,6 +80,7 @@
                         <a href="javascript:;"><i class="seraph icon-lock"></i><cite>锁屏</cite></a>
                     </li>
                     <li class="layui-nav-item" id="userInfo">
+<<<<<<< Updated upstream
                         <a href="javascript:;"><img src="~/images/userface4.jpg" class="layui-nav-img userAvatar" width="35" height="35"><cite class="adminName">@ViewData["NickName"]</cite></a>
                         <dl class="layui-nav-child">
                             <dd><a href="javascript:;" data-url="/Manager/ManagerInfo.html"><i class="seraph icon-ziliao" data-icon="icon-ziliao"></i><cite>个人资料</cite></a></dd>
@@ -43,6 +89,16 @@
                             <dd pc><a href="javascript:;" class="functionSetting"><i class="layui-icon">&#xe620;</i><cite>功能设定</cite><span class="layui-badge-dot"></span></a></dd>
                             <dd pc><a href="javascript:;" class="changeSkin"><i class="layui-icon">&#xe61b;</i><cite>更换皮肤</cite></a></dd>
                             <dd><a href="/Account/SignOut.html" class="signOut"><i class="seraph icon-tuichu"></i><cite>退出</cite></a></dd>
+=======
+                        <a href="javascript:;"><img src="~/images/face.jpg" class="layui-nav-img userAvatar" width="35" height="35"><cite class="adminName">驊驊龔頾</cite></a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:;" data-url="page/user/userInfo.html"><i class="seraph icon-ziliao" data-icon="icon-ziliao"></i><cite>个人资料</cite></a></dd>
+                            <dd><a href="javascript:;" data-url="page/user/changePwd.html"><i class="seraph icon-xiugai" data-icon="icon-xiugai"></i><cite>修改密码</cite></a></dd>
+                            <dd><a href="javascript:;" class="showNotice"><i class="layui-icon">&#xe645;</i><cite>系统公告</cite><span class="layui-badge-dot"></span></a></dd>
+                            <dd pc><a href="javascript:;" class="functionSetting"><i class="layui-icon">&#xe620;</i><cite>功能设定</cite><span class="layui-badge-dot"></span></a></dd>
+                            <dd pc><a href="javascript:;" class="changeSkin"><i class="layui-icon">&#xe61b;</i><cite>更换皮肤</cite></a></dd>
+                            <dd><a href="page/login/login.html" class="signOut"><i class="seraph icon-tuichu"></i><cite>退出</cite></a></dd>
+>>>>>>> Stashed changes
                         </dl>
                     </li>
                 </ul>
@@ -51,6 +107,7 @@
         <!-- 左侧导航 -->
         <div class="layui-side layui-bg-black">
             <div class="user-photo">
+<<<<<<< Updated upstream
                 <a class="img" title="我的头像"><img src="~/images/userface4.jpg" class="userAvatar"></a>
                 <p>你好！<span class="userName">@ViewData["NickName"]</span>, 欢迎登录</p>
             </div>
@@ -67,6 +124,24 @@
                 <ul class="layui-nav layui-nav-tree">
                     <li class="layui-nav-item layui-this">
                         <a href="javascript:;" data-url="/Home/Main.html"><i class="layui-icon" data-icon=""></i><cite>后台首页</cite></a>
+=======
+                <a class="img" title="我的头像"><img src="~/images/face.jpg" class="userAvatar"></a>
+                <p>你好！<span class="userName">驊驊龔頾</span>, 欢迎登录</p>
+            </div>
+            <!-- 搜索 -->
+            <div class="layui-form component">
+                <select name="search" id="search" lay-search lay-filter="searchPage">
+                    <option value="">搜索页面或功能</option>
+                    <option value="1">layer</option>
+                    <option value="2">form</option>
+                </select>
+                <i class="layui-icon">&#xe615;</i>
+            </div>
+            <div class="navBar layui-side-scroll" id="navBar">
+                <ul class="layui-nav layui-nav-tree">
+                    <li class="layui-nav-item layui-this">
+                        <a href="javascript:;" data-url="/home/main.html"><i class="layui-icon" data-icon=""></i><cite>后台首页</cite></a>
+>>>>>>> Stashed changes
                     </li>
                 </ul>
             </div>
@@ -89,13 +164,18 @@
                 </ul>
                 <div class="layui-tab-content clildFrame">
                     <div class="layui-tab-item layui-show">
+<<<<<<< Updated upstream
                         <iframe src="/Home/Main.html"></iframe>
+=======
+                        <iframe src="/home/main.html"></iframe>
+>>>>>>> Stashed changes
                     </div>
                 </div>
             </div>
         </div>
         <!-- 底部 -->
         <div class="layui-footer footer">
+<<<<<<< Updated upstream
             <p><span></span>xjlonly<a onclick="donation()" class="layui-btn layui-btn-danger layui-btn-sm">测试站点</a></p>
         </div>
     </div>
@@ -105,5 +185,18 @@
     <script type="text/javascript" src="~/layui/layui.js"></script>
     <script type="text/javascript" src="~/js/index.js?_=@DateTime.Now.ToString("yyyyMMddHHmmss")"></script>
     <script type="text/javascript" src="~/js/cache.js?_=@DateTime.Now.ToString("yyyyMMddHHmmss")"></script>
+=======
+            <p><span>copyright 2019 </span>　　<a onclick="donation()" class="layui-btn layui-btn-danger layui-btn-sm">捐赠作者</a></p>
+        </div>
+    </div>
+
+    <!-- 移动导航 -->
+    <div class="site-tree-mobile"><i class="layui-icon">&#xe602;</i></div>
+    <div class="site-mobile-shade"></div>
+
+    <script type="text/javascript" src="~/layui/layui.js"></script>
+    <script type="text/javascript" src="~/js/index.js"></script>
+    <script type="text/javascript" src="~/js/cache.js"></script>
+>>>>>>> Stashed changes
 </body>
 </html>
